@@ -68,6 +68,10 @@ Shared reference data, likely separate concepts or enums depending on chosen imp
 - equipment
 - tag
 
+Guideline:
+- use enums for small stable sets with simple behavior
+- use separate reference tables when values need metadata, administration, or future extensibility
+
 ### Statistics module
 Consumes workout sessions and set entries to compute:
 - best set per exercise

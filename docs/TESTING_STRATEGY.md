@@ -7,10 +7,23 @@ Use a full test pyramid with emphasis on correctness of business logic and criti
 ## Test stack
 
 - RSpec
+- test-prof
 - Capybara system specs
 - FactoryBot
 - Shoulda Matchers where useful
 - SimpleCov with threshold
+
+## Default testing stance
+
+- Prefer integration tests with the real database.
+- Do not mock or stub application code unless there is deep need, typically at external service boundaries.
+- Persistence-heavy business logic should be exercised end-to-end against the database.
+- Use test-prof guidance to keep factories, setup cost, and slow examples under control.
+
+## Database testing stance
+
+- Test SQL migrations and persistence behavior through the real database.
+- Do not replace database behavior with stubs or fake repositories.
 
 ## Layers
 

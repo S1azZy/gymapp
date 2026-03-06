@@ -1,0 +1,13 @@
+class <%= migration_class_name %> < ActiveRecord::Migration<%= migration_version %>
+  def up
+    execute <<~SQL
+      -- Write forward SQL here.
+    SQL
+  end
+
+  def down
+    execute <<~SQL
+      -- Write rollback SQL here.
+    SQL
+  end
+end

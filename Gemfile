@@ -16,6 +16,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails"
+gem "haml-rails"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -39,6 +40,7 @@ gem "thruster", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "haml_lint", require: false
 
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
   gem "bundler-audit", require: false
@@ -50,6 +52,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rspec", require: false
+  gem "test-prof", require: false
 end
 
 group :development do
