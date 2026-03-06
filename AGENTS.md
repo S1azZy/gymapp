@@ -128,6 +128,14 @@ Before any merge:
 - policy coverage added for new secured flows
 - new business logic implemented through the canonical interactor pattern
 - new code matches established architectural conventions
+- `CHANGES.md` updated with a short dated summary of user-visible or workflow-relevant changes
+
+## Git workflow
+
+- All changes must be made in a dedicated branch.
+- Branch names created by Codex must use the `codex/` prefix.
+- Changes are merged through GitHub Pull Requests, not direct commits to `main`.
+- Before opening or updating a PR, run the local verification flow and ensure it is green.
 
 ## Coding style
 
@@ -161,3 +169,4 @@ When generating code:
 - do not invent undocumented requirements
 - if uncertain, implement the smallest safe and testable solution
 - preserve project coherence even when a different local solution might also work
+- keep `CHANGES.md` current by appending a concise dated summary for each completed step
