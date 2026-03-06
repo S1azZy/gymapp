@@ -3,8 +3,12 @@
 ## Phase 0 — project bootstrap
 
 - generate Rails 8.1 app with PostgreSQL 18.3
+- configure `structure.sql` and SQL-only migration templates
+- enforce UUID primary keys via PostgreSQL 18 `uuidv7()`
 - add Docker / docker-compose
+- standardize on Haml templates
 - add RSpec, FactoryBot, SimpleCov
+- add `test-prof`
 - add RuboCop, Brakeman, bundler-audit
 - configure CI
 - configure Tailwind, Hotwire, locales

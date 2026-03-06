@@ -78,12 +78,27 @@
 - `make shell` — открыть Rails console.
 - `make bundle` — установить gem-зависимости в контейнере.
 - `make lint` — запустить линтеры Ruby.
+- `make haml-lint` — проверить Haml-шаблоны.
 - `make rubocop` — запустить RuboCop.
 - `make rubocop-autocorrect` — запустить RuboCop с автокоррекцией.
 - `make test` — запустить тесты.
 - `make security` — запустить Brakeman.
 - `make verify` — обязательная локальная проверка перед коммитом.
 - `make ci` — полный CI-пайплайн локально.
+- `make migration NAME=CreateUsers` — создать SQL-only migration skeleton.
+
+## Database rules
+
+- Схема хранится в `structure.sql`.
+- Все миграции пишутся только на SQL внутри `up` / `down`.
+- Все primary keys должны быть `uuid` с `DEFAULT uuidv7()`.
+- `CHECK` используем только для настоящих storage-level invariant, а не для бизнес-валидаций уровня приложения.
+- `enum` допустимы; если значениям нужны метаданные и админка, используем отдельные справочники.
+- Для моделей с генератором используем `--skip-migration`, затем создаем отдельную SQL-миграцию.
+
+## Views
+
+- Шаблоны проекта пишем на `Haml`, не на `ERB`.
 
 ## Быстрый старт
 

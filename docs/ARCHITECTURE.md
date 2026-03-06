@@ -104,10 +104,16 @@ Consumes workout facts and exposes computed metrics. It must not own workout ent
 ## Persistence philosophy
 
 - Use Active Record.
+- Use raw SQL migrations managed by Rails migration files.
+- Store schema in `structure.sql`.
+- Use PostgreSQL 18 `uuidv7()` for all primary keys.
 - Start without a repository layer.
 - Introduce query/repository abstractions only where complexity clearly justifies them.
 - Prefer inspectable Rails patterns.
 - Keep models thin.
+- Keep database design strict with explicit foreign keys and indexes.
+- Keep business rules in the application layer; only use database `CHECK` constraints for persistence-level invariants that clearly belong in storage.
+- Avoid triggers and database-side automation in MVP unless a later decision explicitly allows them.
 
 ## Admin approach
 

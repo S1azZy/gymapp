@@ -8,3 +8,12 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+body {
+  margin: 0;
+}
+
+.home-page {
+  padding: 2rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
