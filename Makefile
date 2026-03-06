@@ -42,16 +42,16 @@ rubocop-autocorrect:
 	$(APP) bin/rubocop -A
 
 test:
-	$(APP) bash -lc "RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bundle exec rspec"
+	$(APP) bash -lc "RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bin/rails tailwindcss:build && RAILS_ENV=test bundle exec rspec"
 
 security:
 	$(APP) bash -lc "bin/bundler-audit && bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
 
 verify:
-	$(APP) bash -lc "bin/rubocop -A && bundle exec haml-lint app/views && RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bundle exec rspec && bin/bundler-audit && bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
+	$(APP) bash -lc "bin/rubocop -A && bundle exec haml-lint app/views && RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bin/rails tailwindcss:build && RAILS_ENV=test bundle exec rspec && bin/bundler-audit && bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
 
 verify-fast:
-	$(APP) bash -lc "bin/rubocop -A && bundle exec haml-lint app/views && RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bundle exec rspec"
+	$(APP) bash -lc "bin/rubocop -A && bundle exec haml-lint app/views && RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bin/rails tailwindcss:build && RAILS_ENV=test bundle exec rspec"
 
 ci:
 	$(APP) bin/ci
