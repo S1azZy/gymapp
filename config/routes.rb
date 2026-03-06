@@ -9,5 +9,12 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  resources :password_resets, only: %i[new create edit update]
+  resources :users, only: %i[new create]
+  resource :session, only: %i[new create destroy]
+  namespace :admin do
+    get "/", to: "dashboard#show", as: :dashboard
+  end
+  get "dashboard", to: "dashboard#show"
   root "home#index"
 end

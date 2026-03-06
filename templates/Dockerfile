@@ -7,12 +7,21 @@ FROM ruby:${RUBY_VERSION}-slim
 WORKDIR /app
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+  ca-certificates \
+  curl \
+  gnupg \
+  && install -d /usr/share/postgresql-common/pgdg \
+  && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+    | gpg --dearmor -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.gpg \
+  && echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.gpg] http://apt.postgresql.org/pub/repos/apt $(. /etc/os-release && echo \"$VERSION_CODENAME\")-pgdg main" \
+    > /etc/apt/sources.list.d/pgdg.list \
+  && apt-get update -qq && apt-get install -y --no-install-recommends \
   build-essential \
   libpq-dev \
   nodejs \
   npm \
   git \
-  curl \
+  postgresql-client-18 \
   && rm -rf /var/lib/apt/lists/*
 
 COPY Gemfile Gemfile.lock ./

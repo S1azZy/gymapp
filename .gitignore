@@ -29,6 +29,11 @@
 !/tmp/storage/.keep
 
 /public/assets
+/coverage
+/tmp/mails/*
+.vscode/
+*.swp
+*.swo
 
 # Ignore key files for decrypting credentials and more.
 /config/*.key

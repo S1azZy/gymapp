@@ -1,3 +1,12 @@
 %main.home-page
-  %h1 Gym App
-  %p Rails 8.1 is running in Docker.
+  %h1= t("home.title")
+  %p= t("home.subtitle")
+
+  - if authenticated?
+    %p= t("home.signed_in_as", email: current_user.email)
+    = link_to t("navigation.dashboard"), dashboard_path, class: "primary-link"
+    - if current_user.admin?
+      = secondary_link_to t("navigation.admin"), admin_dashboard_path
+  - else
+    = link_to t("navigation.sign_in"), new_session_path, class: "primary-link"
+    = link_to t("navigation.sign_up"), new_user_path, class: "secondary-link"

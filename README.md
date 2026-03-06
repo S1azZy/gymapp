@@ -77,14 +77,16 @@
 - `make bash` — открыть shell внутри app-контейнера.
 - `make shell` — открыть Rails console.
 - `make bundle` — установить gem-зависимости в контейнере.
-- `make lint` — запустить линтеры Ruby.
+- `make lint` — запустить RuboCop с autocorrect.
 - `make haml-lint` — проверить Haml-шаблоны.
-- `make rubocop` — запустить RuboCop.
+- `make rubocop` — запустить RuboCop с autocorrect.
 - `make rubocop-autocorrect` — запустить RuboCop с автокоррекцией.
-- `make test` — запустить тесты.
-- `make security` — запустить Brakeman.
-- `make verify` — обязательная локальная проверка перед коммитом.
+- `make test` — запустить `RSpec`.
+- `make security` — запустить `bundler-audit` и `Brakeman`.
+- `make verify-fast` — быстрый локальный gate: lint + Haml + tests.
+- `make verify` — полный локальный gate перед коммитом: lint + Haml + tests + security.
 - `make ci` — полный CI-пайплайн локально.
+- `make doctor` — быстрая проверка локального окружения и версий.
 - `make migration NAME=CreateUsers` — создать SQL-only migration skeleton.
 
 ## Database rules
@@ -107,3 +109,9 @@
 3. Один раз включить локальный pre-commit hook: `make install-hooks`
 
 После этого каждый `git commit` будет автоматически запускать `make verify`.
+
+Если нужен более быстрый цикл во время активной разработки, используй `make verify-fast`, а перед коммитом оставляй `make verify`.
+
+Дополнительные правила разработки:
+- RuboCop запускаем сразу с autocorrect, чтобы не тратить время на механические исправления.
+- В `RSpec` используем `shared_context` и `shared_examples`, когда это уменьшает дублирование и не скрывает смысл тестов.

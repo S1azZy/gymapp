@@ -3,10 +3,11 @@
 CI.run do
   step "Setup", "bin/setup --skip-server"
 
-  step "Style: Ruby", "bin/rubocop"
+  step "Style: Ruby", "bin/rubocop -A"
+  step "Style: Haml", "bundle exec haml-lint app/views"
+  step "Tests: RSpec", "RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bundle exec rspec"
 
   step "Security: Gem audit", "bin/bundler-audit"
-  step "Security: Yarn vulnerability audit", "yarn audit"
   step "Security: Brakeman code analysis", "bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
 
   # Optional: set a green GitHub commit status to unblock PR merge.

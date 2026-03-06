@@ -147,6 +147,7 @@ Before any merge:
 - new code matches established architectural conventions
 - `CHANGES.md` updated with a short dated summary of user-visible or workflow-relevant changes
 - new migrations follow the SQL-only + `uuidv7()` rules
+- RuboCop runs with autocorrect enabled by default
 
 ## Git workflow
 
@@ -173,6 +174,7 @@ Before any merge:
 - Do not mock or stub application code without a concrete need such as unavoidable external I/O.
 - Business logic that touches persistence should be tested against the real database.
 - Use `test-prof` and follow its guidance when improving test performance and factory usage.
+- Prefer `shared_context` and `shared_examples` when they remove meaningful duplication without hiding test intent.
 
 ## Directory expectations
 
@@ -196,3 +198,4 @@ When generating code:
 - if uncertain, implement the smallest safe and testable solution
 - preserve project coherence even when a different local solution might also work
 - keep `CHANGES.md` current by appending a concise dated summary for each completed step
+- run RuboCop with autocorrect enabled by default

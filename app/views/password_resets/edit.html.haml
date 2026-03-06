@@ -1,0 +1,29 @@
+%main.auth-page
+  %section.auth-card
+    %h1= t("auth.password_resets.edit.title")
+    %p.auth-card__subtitle= t("auth.password_resets.edit.subtitle")
+    :ruby
+      reset_token = params[:token]
+      reset_url = password_reset_path(@password_reset_token, token: reset_token)
+      reset_form_options = {
+        url: reset_url,
+        scope: :password_reset,
+        method: :patch
+      }
+      reset_submit_label = t("auth.password_resets.form.reset_submit")
+
+    = auth_form_with(**reset_form_options) do |form|
+      .auth-form__field
+        = form.label :password, t("auth.password_resets.form.password")
+        = form.password_field :password,
+          autocomplete: "new-password",
+          required: true
+
+      .auth-form__field
+        = form.label :password_confirmation,
+          t("auth.password_resets.form.password_confirmation")
+        = form.password_field :password_confirmation,
+          autocomplete: "new-password",
+          required: true
+
+      = form.submit reset_submit_label, class: "auth-form__submit"

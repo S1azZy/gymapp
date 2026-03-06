@@ -1,0 +1,75 @@
+ru:
+  app:
+    name: "Gym App"
+  navigation:
+    admin: "Админка"
+    dashboard: "Панель"
+    language: "Переключение языка"
+    primary: "Основная навигация"
+    sign_in: "Войти"
+    sign_out: "Выйти"
+    sign_up: "Регистрация"
+  home:
+    title: "Gym App"
+    subtitle: "Трекер тренировок в зале на production-minded Rails основе."
+    signed_in_as: "Вы вошли как %{email}."
+  dashboard:
+    title: "Панель"
+    subtitle: "Вы вошли как %{email}."
+  admin:
+    dashboard:
+      title: "Админка"
+      subtitle: "Административный доступ активен для %{email}."
+  authorization:
+    not_allowed: "У вас нет доступа к этой странице."
+  auth:
+    flash:
+      invalid_credentials: "Неверный email или пароль."
+      rate_limited: "Слишком много попыток. Подождите и попробуйте снова."
+      password_reset_completed: "Пароль обновлён. Пожалуйста, войдите снова."
+      password_reset_failed: "Не удалось изменить пароль."
+      password_reset_invalid: "Ссылка для сброса пароля недействительна или устарела."
+      password_reset_requested: "Если аккаунт существует, инструкции по сбросу уже отправлены."
+      please_sign_in: "Сначала войдите в систему."
+      sign_up_failed: "Не удалось создать аккаунт."
+      signed_in: "Вход выполнен."
+      signed_out: "Вы вышли из системы."
+      signed_up: "Аккаунт успешно создан."
+    sessions:
+      new:
+        forgot_password: "Забыли пароль?"
+        title: "Вход"
+        subtitle: "Используйте аккаунт Gym App, чтобы продолжить."
+      form:
+        email: "Email"
+        password: "Пароль"
+        submit: "Войти"
+    users:
+      new:
+        title: "Создать аккаунт"
+        subtitle: "Начните с email и безопасного пароля."
+      form:
+        email: "Email"
+        password: "Пароль"
+        password_confirmation: "Подтвердите пароль"
+        submit: "Создать аккаунт"
+    password_resets:
+      new:
+        title: "Сброс пароля"
+        subtitle: "Укажите email, и мы отправим инструкцию для сброса."
+      edit:
+        title: "Выберите новый пароль"
+        subtitle: "Установите новый пароль для аккаунта Gym App."
+      form:
+        email: "Email"
+        password: "Новый пароль"
+        password_confirmation: "Подтвердите новый пароль"
+        request_submit: "Отправить инструкции"
+        reset_submit: "Обновить пароль"
+  mailers:
+    password_reset_mailer:
+      reset_password:
+        expiration: "Ссылка действует 30 минут и может быть использована только один раз."
+        greeting: "Здравствуйте, %{email}."
+        instructions: "Используйте эту ссылку, чтобы сбросить пароль Gym App:"
+        subject: "Сброс пароля Gym App"
