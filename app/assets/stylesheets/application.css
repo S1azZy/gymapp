@@ -11,9 +11,163 @@
 
 body {
   margin: 0;
+  background: #f5efe5;
+  color: #1b1b18;
 }
 
 .home-page {
   padding: 2rem;
   font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+body,
+input,
+button {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-header {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #1f4d3a;
+  color: #fffdf7;
+}
+
+.app-header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.app-brand,
+.app-nav__link,
+.app-nav__button,
+.primary-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-brand {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.app-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-nav__form {
+  margin: 0;
+}
+
+.app-nav__button {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #fffdf7;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.locale-switcher {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.locale-switcher__link {
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(255, 253, 247, 0.24);
+  border-radius: 999px;
+  color: #fffdf7;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.locale-switcher__link--active {
+  background: #fffdf7;
+  color: #1f4d3a;
+}
+
+.flash {
+  margin: 1rem 1.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+}
+
+.flash--notice {
+  background: #d9f0de;
+}
+
+.flash--alert {
+  background: #f8d8d2;
+}
+
+.primary-link,
+.auth-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: #1f4d3a;
+  color: #fffdf7;
+}
+
+.secondary-link {
+  display: inline-flex;
+  margin-left: 0.75rem;
+  color: #1f4d3a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-page {
+  padding: 2rem 1.5rem;
+}
+
+.auth-card {
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: #fffdf7;
+  box-shadow: 0 1rem 2.5rem rgba(32, 35, 31, 0.08);
+}
+
+.auth-card__subtitle {
+  margin-bottom: 1.5rem;
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-form__field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.auth-form__field input {
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #c9c3b8;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+@media (max-width: 640px) {
+  .app-header__top,
+  .app-nav {
+    width: 100%;
+  }
 }

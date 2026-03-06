@@ -6,3 +6,10 @@
 - Added a dated project change log, a branch-and-PR workflow rule set, Docker-oriented `make` commands, and local pre-commit verification with RuboCop and tests.
 - Added project-wide rules for SQL-only migrations, PostgreSQL 18 `uuidv7()` primary keys, strict relational constraints, and integration-first testing with `test-prof`.
 - Moved migration guidance into `docs`, clarified that business validations stay in the application layer, and switched view templates from ERB to Haml.
+- Bootstrapped the phase 2 engineering stack with RSpec, SimpleCov, FactoryBot, Shoulda Matchers, Pundit, yabi, bcrypt, and an RSpec-based verification flow.
+- Added the auth foundation: SQL-backed `users` and `user_sessions`, session-based sign-in/sign-out, `Current`, a protected dashboard, and yabi-based session authentication interactor coverage.
+- Updated workflow rules so RuboCop runs with autocorrect by default and test conventions explicitly encourage shared RSpec contexts/examples where they improve clarity.
+- Added sign-up flow with yabi-based user creation, automatic sign-in after registration, localized Haml pages, and full request/interactor coverage.
+- Added password reset request and completion flows with mail delivery, single-use reset tokens, session invalidation, localized Haml pages, and integration-heavy RSpec coverage.
+- Completed phase 2 with session-persisted `ru/en` locale switching, Pundit policies, admin access gate, cache-backed auth rate limiting, localized app shell navigation, and request/policy/system test coverage.
+- Tightened the project scaffold with a stronger `make verify`, `verify-fast` and `doctor` commands, Haml lint in CI, `.editorconfig`, `.gitattributes`, a PR template, and cleaner git/docker ignore rules.

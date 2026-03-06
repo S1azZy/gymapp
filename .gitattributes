@@ -1,0 +1,8 @@
+* text=auto eol=lf
+
+*.rb text eol=lf
+*.rake text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.haml text eol=lf

@@ -7,7 +7,7 @@ require "active_job/railtie"
 require "active_record/railtie"
 # require "active_storage/engine"
 require "action_controller/railtie"
-# require "action_mailer/railtie"
+require "action_mailer/railtie"
 # require "action_mailbox/engine"
 # require "action_text/engine"
 require "action_view/railtie"
@@ -29,6 +29,8 @@ module GymApp
     config.autoload_lib(ignore: %w[assets tasks templates])
 
     config.active_record.schema_format = :sql
+    config.i18n.available_locales = %i[en ru]
+    config.i18n.default_locale = :en
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -42,6 +44,12 @@ module GymApp
       generators.orm :active_record, primary_key_type: :uuid
       generators.template_engine :haml
       generators.system_tests = nil
+      generators.test_framework :rspec,
+        fixtures: false,
+        helper_specs: false,
+        routing_specs: false,
+        view_specs: false
+      generators.fixture_replacement :factory_bot, dir: "spec/factories"
     end
   end
 end

@@ -17,13 +17,16 @@ Rails.application.configure do
 
   # Configure public file server for tests with cache-control for performance.
   config.public_file_server.headers = { "cache-control" => "public, max-age=3600" }
+  config.hosts.clear
 
   # Show full error reports.
   config.consider_all_requests_local = true
-  config.cache_store = :null_store
+  config.cache_store = :memory_store
 
   # Render exception templates for rescuable exceptions and raise for other exceptions.
   config.action_dispatch.show_exceptions = :rescuable
+  config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = { host: "example.org" }
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false

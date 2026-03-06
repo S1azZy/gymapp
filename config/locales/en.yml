@@ -1,31 +1,75 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  app:
+    name: "Gym App"
+  navigation:
+    admin: "Admin"
+    dashboard: "Dashboard"
+    language: "Language switcher"
+    primary: "Primary navigation"
+    sign_in: "Sign in"
+    sign_out: "Sign out"
+    sign_up: "Sign up"
+  home:
+    title: "Gym App"
+    subtitle: "Track gym workouts with a production-minded Rails foundation."
+    signed_in_as: "Signed in as %{email}."
+  dashboard:
+    title: "Dashboard"
+    subtitle: "You are signed in as %{email}."
+  admin:
+    dashboard:
+      title: "Admin"
+      subtitle: "Admin access is active for %{email}."
+  authorization:
+    not_allowed: "You do not have access to that page."
+  auth:
+    flash:
+      invalid_credentials: "Incorrect email or password."
+      rate_limited: "Too many attempts. Please wait and try again."
+      password_reset_completed: "Your password has been updated. Please sign in again."
+      password_reset_failed: "We could not reset your password."
+      password_reset_invalid: "That password reset link is invalid or expired."
+      password_reset_requested: "If the account exists, password reset instructions have been sent."
+      please_sign_in: "Please sign in to continue."
+      sign_up_failed: "We could not create your account."
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+      signed_up: "Account created successfully."
+    sessions:
+      new:
+        forgot_password: "Forgot password?"
+        title: "Sign in"
+        subtitle: "Use your Gym App account to continue."
+      form:
+        email: "Email"
+        password: "Password"
+        submit: "Sign in"
+    users:
+      new:
+        title: "Create account"
+        subtitle: "Start with an email and a secure password."
+      form:
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm password"
+        submit: "Create account"
+    password_resets:
+      new:
+        title: "Reset password"
+        subtitle: "Enter your email and we will send reset instructions."
+      edit:
+        title: "Choose a new password"
+        subtitle: "Set a new password for your Gym App account."
+      form:
+        email: "Email"
+        password: "New password"
+        password_confirmation: "Confirm new password"
+        request_submit: "Send reset instructions"
+        reset_submit: "Update password"
+  mailers:
+    password_reset_mailer:
+      reset_password:
+        expiration: "This link expires in 30 minutes and can be used only once."
+        greeting: "Hello, %{email}."
+        instructions: "Use this link to reset your Gym App password:"
+        subject: "Reset your Gym App password"

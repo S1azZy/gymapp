@@ -17,4 +17,27 @@
 
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
   %body
-    = yield
+    .app-shell
+      %header.app-header
+        .app-header__top
+          = link_to t("app.name"), root_path, class: "app-brand"
+          .locale-switcher{ aria: { label: t("navigation.language") } }
+            - available_locales.each do |locale|
+              = locale_switch_link(locale)
+        %nav.app-nav{ aria: { label: t("navigation.primary") } }
+          - if authenticated?
+            = app_nav_link_to t("navigation.dashboard"), dashboard_path
+            - if current_user.admin?
+              = app_nav_link_to t("navigation.admin"), admin_dashboard_path
+            = app_nav_button_to t("navigation.sign_out"),
+              session_path,
+              method: :delete,
+              form_class: "app-nav__form"
+          - else
+            = app_nav_link_to t("navigation.sign_in"), new_session_path
+            = app_nav_link_to t("navigation.sign_up"), new_user_path
+
+      - flash.each do |type, message|
+        %p{ class: "flash flash--#{type}" }= message
+
+      = yield

@@ -19,6 +19,7 @@ Use a full test pyramid with emphasis on correctness of business logic and criti
 - Do not mock or stub application code unless there is deep need, typically at external service boundaries.
 - Persistence-heavy business logic should be exercised end-to-end against the database.
 - Use test-prof guidance to keep factories, setup cost, and slow examples under control.
+- Use `shared_context` and `shared_examples` where they reduce duplication without making specs harder to read.
 
 ## Database testing stance
 
