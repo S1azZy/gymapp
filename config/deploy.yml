@@ -1,0 +1,30 @@
+service: gym-app
+image: your-registry/gym-app
+
+servers:
+  web:
+    - 203.0.113.10
+
+proxy:
+  ssl: true
+  host: app.example.com
+
+registry:
+  server: registry.example.com
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  clear:
+    RAILS_ENV: production
+  secret:
+    - RAILS_MASTER_KEY
+    - GYM_APP_DATABASE_PASSWORD
+
+volumes:
+  - "gym_app_storage:/app/storage"
+
+builder:
+  arch: amd64

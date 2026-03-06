@@ -1,4 +1,7 @@
 # Gym App Codex Starter Pack
+[![CI](https://github.com/S1azZy/gymapp/actions/workflows/ci.yml/badge.svg)](https://github.com/S1azZy/gymapp/actions/workflows/ci.yml)
+![Ruby](https://img.shields.io/badge/Ruby-3.4.x-CC342D?logo=ruby)
+![Rails](https://img.shields.io/badge/Rails-8.1.x-D30001?logo=rubyonrails)
 
 Стартовый комплект документов и шаблонов для запуска проекта **Gym App** в Codex.
 
@@ -6,6 +9,7 @@
 
 - [`CHANGES.md`](/Users/a.tselovalnikov/projects/gymapp/CHANGES.md) ведется постоянно.
 - После каждого завершенного шага добавляем короткую запись с датой и суммаризацией результата.
+- Coverage badge добавляем только когда подключена автоматическая публикация покрытия в CI.
 
 ## Что внутри
 
@@ -18,6 +22,7 @@
 - `docs/ROADMAP.md` — этапы MVP → v1.1 → v1.2
 - `docs/IMPLEMENTATION_PLAN.md` — практический порядок реализации
 - `docs/TECH_DECISIONS.md` — зафиксированные технологические решения и anti-goals
+- `config/deploy.yml` — placeholder-конфиг Kamal для будущего деплоя
 - `templates/CODEX_BOOTSTRAP_PROMPT.md` — готовый стартовый промпт для Codex
 - `templates/` — шаблоны конфигов, которые Codex может положить в репозиторий
 
