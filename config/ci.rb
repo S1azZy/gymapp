@@ -5,7 +5,7 @@ CI.run do
 
   step "Style: Ruby", "bin/rubocop -A"
   step "Style: Haml", "bundle exec haml-lint app/views"
-  step "Tests: RSpec", "RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bundle exec rspec"
+  step "Tests: RSpec", "RAILS_ENV=test bin/rails db:prepare && RAILS_ENV=test bin/rails tailwindcss:build && RAILS_ENV=test bundle exec rspec"
 
   step "Security: Gem audit", "bin/bundler-audit"
   step "Security: Brakeman code analysis", "bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
