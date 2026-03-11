@@ -11,7 +11,7 @@
 - Updated workflow rules so RuboCop runs with autocorrect by default and test conventions explicitly encourage shared RSpec contexts/examples where they improve clarity.
 - Added sign-up flow with yabi-based user creation, automatic sign-in after registration, localized Haml pages, and full request/interactor coverage.
 - Added password reset request and completion flows with mail delivery, single-use reset tokens, session invalidation, localized Haml pages, and integration-heavy RSpec coverage.
-- Completed phase 2 with session-persisted `ru/en` locale switching, Pundit policies, admin access gate, cache-backed auth rate limiting, localized app shell navigation, and request/policy/system test coverage.
+- Completed the auth/app-shell baseline with session-persisted `ru/en` locale switching, Pundit policies, admin access gate, cache-backed auth rate limiting, localized app shell navigation, and request/policy/system test coverage.
 - Tightened the project scaffold with a stronger `make verify`, `verify-fast` and `doctor` commands, Haml lint in CI, `.editorconfig`, `.gitattributes`, a PR template, and cleaner git/docker ignore rules.
 - Added scaffold completion polish: README badges, real Hotwire importmap runtime wiring, Tailwind Rails integration, Kamal deploy placeholder config, and production SSL defaults.
 
