@@ -81,4 +81,8 @@ module ApplicationHelper
   def admin_reference_status_label(status_key)
     t("admin.reference_data.statuses.#{status_key}")
   end
+
+  def localized_option_name(record)
+    record.localized_name || record.localized_name(:en)
+  end
 end

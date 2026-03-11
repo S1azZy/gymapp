@@ -1,0 +1,9 @@
+- content_for :title, t("admin.exercises.edit.title")
+
+%main.admin-page
+  .admin-page__header
+    .admin-page__heading
+      %p.admin-page__eyebrow= t("admin.exercises.eyebrow")
+      %h1= t("admin.exercises.edit.title")
+      %p.admin-page__subtitle= t("admin.exercises.edit.subtitle")
+  = render "form"

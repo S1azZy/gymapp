@@ -6,8 +6,16 @@
       %p.admin-page__subtitle
         = t("admin.dashboard.subtitle", email: current_user.email)
 
+  :ruby
+    admin_resources = [
+      "body_parts",
+      "muscle_groups",
+      "equipment_types",
+      "tags",
+      "exercises"
+    ]
   .reference-grid
-    - %w[body_parts muscle_groups equipment_types tags].each do |resource|
+    - admin_resources.each do |resource|
       - resource_name = admin_reference_resource_label(resource, :plural)
       - resource_path = public_send("admin_#{resource}_path")
       %section.reference-card

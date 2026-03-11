@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :muscle_groups, except: :show
     resources :equipment_types, except: :show
     resources :tags, except: :show
+    resources :exercises, except: :show
   end
   get "dashboard", to: "dashboard#show"
   root "home#index"
