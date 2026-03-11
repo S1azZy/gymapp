@@ -82,6 +82,18 @@ module ApplicationHelper
     t("admin.reference_data.statuses.#{status_key}")
   end
 
+  def admin_dashboard_resource_path(resource_key)
+    public_send("admin_#{resource_key}_path")
+  end
+
+  def admin_dashboard_new_resource_path(resource_key)
+    public_send("new_admin_#{resource_key.to_s.singularize}_path")
+  end
+
+  def admin_dashboard_resource_count_text(count)
+    t("admin.dashboard.resource_count", count:)
+  end
+
   def localized_option_name(record)
     record.localized_name || record.localized_name(:en) || record.key
   end

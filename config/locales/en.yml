@@ -51,6 +51,9 @@ en:
       eyebrow: "Admin area"
       title: "Admin"
       subtitle: "Admin access is active for %{email}."
+      resource_count:
+        one: "%{count} record"
+        other: "%{count} records"
       sections:
         reference_data: "Shared reference data available to all users."
     reference_data:

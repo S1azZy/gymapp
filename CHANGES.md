@@ -28,3 +28,4 @@
 - Added admin exercise CRUD with localized `name/description/synonyms`, classification links, tag assignment, and yabi-based persistence covered by request and interactor specs.
 - Hardened catalog schema for idempotent seeds and admin UX with stable `key` identifiers, sortable `position` fields, and baseline reference/exercise seeds built entirely on keys rather than translated names.
 - Added the authenticated user-facing exercise catalog with localized list/detail pages, search by name or synonym, and filters by body part, muscle group, equipment type, and tag.
+- Polished the reference-data flow with admin dashboard record counts, quick-create entry points, and end-to-end system coverage from admin catalog management to member browsing.

@@ -51,6 +51,11 @@ ru:
       eyebrow: "Админ-зона"
       title: "Админка"
       subtitle: "Административный доступ активен для %{email}."
+      resource_count:
+        one: "%{count} запись"
+        few: "%{count} записи"
+        many: "%{count} записей"
+        other: "%{count} записи"
       sections:
         reference_data: "Общие справочники, доступные всем пользователям."
     reference_data:
