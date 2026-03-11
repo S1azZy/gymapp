@@ -2,14 +2,9 @@ You are bootstrapping a new production-minded Rails application called **Gym App
 
 Read and follow these project files first:
 - `AGENTS.md`
-- `docs/PRODUCT_REQUIREMENTS.md`
-- `docs/ARCHITECTURE.md`
-- `docs/DOMAIN_MODEL.md`
-- `docs/SECURITY.md`
-- `docs/TESTING_STRATEGY.md`
-- `docs/ROADMAP.md`
-- `docs/IMPLEMENTATION_PLAN.md`
-- `docs/TECH_DECISIONS.md`
+- `docs/FOUNDATIONS.md`
+- `docs/QUALITY_SECURITY.md`
+- `docs/PLAN.md`
 
 This is a real product-first project. Learning modern Rails stack is a valuable secondary benefit, but not the primary goal.
 Choose technologies and implementation details that maximize product quality, maintainability, and coherence.

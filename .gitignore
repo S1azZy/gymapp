@@ -40,6 +40,8 @@
 
 # Local machine/editor artifacts
 .DS_Store
+
+# JetBrains IDE settings (RubyMine, IntelliJ, etc.)
 .idea/
 
 /app/assets/builds/*

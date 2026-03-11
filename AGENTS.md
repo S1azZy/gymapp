@@ -25,6 +25,13 @@ Build a production-minded training tracker with:
 - admin panel
 - bilingual UI (ru/en)
 
+## Canonical docs
+
+Use only these consolidated docs as the project documentation baseline:
+- `docs/FOUNDATIONS.md`
+- `docs/QUALITY_SECURITY.md`
+- `docs/PLAN.md`
+
 ## Product-first rule
 
 When there is tension between:
