@@ -7,8 +7,10 @@ RSpec.describe Exercise, type: :model do
   it { is_expected.to belong_to(:muscle_group) }
   it { is_expected.to belong_to(:equipment_type) }
   it { is_expected.to have_many(:exercise_tags).dependent(:destroy) }
+  it { is_expected.to have_many(:workout_template_exercises).dependent(:restrict_with_exception) }
   it { is_expected.to have_many(:tags).through(:exercise_tags) }
   it { is_expected.to have_many(:exercise_translations).dependent(:destroy) }
+  it { is_expected.to have_many(:workout_templates).through(:workout_template_exercises) }
   it { is_expected.to validate_presence_of(:body_part) }
   it { is_expected.to validate_presence_of(:muscle_group) }
   it { is_expected.to validate_presence_of(:equipment_type) }
