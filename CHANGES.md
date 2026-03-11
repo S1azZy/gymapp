@@ -14,3 +14,9 @@
 - Completed phase 2 with session-persisted `ru/en` locale switching, Pundit policies, admin access gate, cache-backed auth rate limiting, localized app shell navigation, and request/policy/system test coverage.
 - Tightened the project scaffold with a stronger `make verify`, `verify-fast` and `doctor` commands, Haml lint in CI, `.editorconfig`, `.gitattributes`, a PR template, and cleaner git/docker ignore rules.
 - Added scaffold completion polish: README badges, real Hotwire importmap runtime wiring, Tailwind Rails integration, Kamal deploy placeholder config, and production SSL defaults.
+
+## 2026-03-11
+
+- Consolidated documentation from 9 files to 3 focused files: `docs/FOUNDATIONS.md`, `docs/QUALITY_SECURITY.md`, and `docs/PLAN.md`.
+- Removed duplicated/verbose docs sections and kept only hard project rules, quality/security gates, and delivery plan.
+- Updated `AGENTS.md`, `README.md`, and `templates/CODEX_BOOTSTRAP_PROMPT.md` to reference the new docs structure.

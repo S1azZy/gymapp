@@ -14,14 +14,9 @@
 ## Что внутри
 
 - `AGENTS.md` — правила для AI-агентов/Codex
-- `docs/PRODUCT_REQUIREMENTS.md` — продуктовые требования MVP
-- `docs/ARCHITECTURE.md` — архитектурные решения и границы
-- `docs/DOMAIN_MODEL.md` — верхнеуровневая доменная модель
-- `docs/SECURITY.md` — обязательные security-требования
-- `docs/TESTING_STRATEGY.md` — стратегия тестирования и quality gates
-- `docs/ROADMAP.md` — этапы MVP → v1.1 → v1.2
-- `docs/IMPLEMENTATION_PLAN.md` — практический порядок реализации
-- `docs/TECH_DECISIONS.md` — зафиксированные технологические решения и anti-goals
+- `docs/FOUNDATIONS.md` — продуктовые приоритеты, архитектура, доменные границы, стек и DB/migration правила
+- `docs/QUALITY_SECURITY.md` — security baseline, тестовая стратегия и quality gates
+- `docs/PLAN.md` — фазы реализации и post-MVP roadmap
 - `config/deploy.yml` — placeholder-конфиг Kamal для будущего деплоя
 - `templates/CODEX_BOOTSTRAP_PROMPT.md` — готовый стартовый промпт для Codex
 - `templates/` — шаблоны конфигов, которые Codex может положить в репозиторий
@@ -64,7 +59,7 @@
 2. Передать содержимое этих файлов в Codex.
 3. Начать с `templates/CODEX_BOOTSTRAP_PROMPT.md`.
 4. Попросить Codex сначала создать каркас и инфраструктуру качества.
-5. Затем идти по `docs/IMPLEMENTATION_PLAN.md`, сохраняя единый стиль по всему проекту.
+5. Затем идти по `docs/PLAN.md`, сохраняя единый стиль по всему проекту.
 
 ## Git workflow
 
