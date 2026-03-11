@@ -2,19 +2,27 @@ module Admin
   module ReferenceData
     class UpsertLocalizedRecord < ApplicationInteractor
       option :record
+      option :key
+      option :position
       option :active
       option :translations
 
       class ValidationContract < ApplicationContract
         params do
           required(:record)
+          required(:key).filled(:string)
+          required(:position).filled(:integer)
           required(:active).filled(:bool)
           required(:translations).filled(:hash)
         end
       end
 
       def call
-        record.active = active
+        record.assign_attributes(
+          key: key_value,
+          position:,
+          active:
+        )
         assign_translations
 
         return Failure(code: :invalid_attributes, record: invalid_record) unless valid_record?
@@ -45,6 +53,12 @@ module Admin
         record.class.reflect_on_all_associations(:has_many)
           .find { |association| association.name.to_s.end_with?("_translations") }
           .name
+      end
+
+      def key_value
+        return record.key if record.persisted?
+
+        key
       end
 
       def translations_to_persist

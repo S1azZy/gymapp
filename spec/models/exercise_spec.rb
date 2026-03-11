@@ -13,6 +13,8 @@ RSpec.describe Exercise, type: :model do
   it { is_expected.to validate_presence_of(:muscle_group) }
   it { is_expected.to validate_presence_of(:equipment_type) }
 
+  it_behaves_like "keyed catalog entity", :exercise, positioned: false
+
   describe "#translation_for" do
     subject(:translation_for_locale) { exercise.translation_for(requested_locale) }
 

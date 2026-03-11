@@ -20,11 +20,17 @@
               localized_title = record.localized_name ||
                 record.localized_name(:en) ||
                 resource_label
+              meta_text = t(
+                "admin.reference_data.meta.key_position",
+                key: record.key,
+                position: record.position
+              )
               status_key = record.active? ? "active" : "inactive"
               status_text = admin_reference_status_label(status_key)
             %h2= localized_title
             %span{ class: "reference-status reference-status--#{status_key}" }
               = status_text
+          %p= meta_text
           %dl.reference-card__translations
             - available_locales.each do |locale|
               - translated_name = record.localized_name(locale)

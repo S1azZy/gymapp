@@ -30,6 +30,7 @@ module Admin
 
       def assign_base_attributes
         exercise.assign_attributes(
+          key: exercise_key,
           active: active_value,
           body_part_id: attribute_value("body_part_id"),
           muscle_group_id: attribute_value("muscle_group_id"),
@@ -75,6 +76,12 @@ module Admin
 
       def attribute_value(key)
         exercise_attributes[key] || exercise_attributes[key.to_sym]
+      end
+
+      def exercise_key
+        return exercise.key if exercise.persisted?
+
+        attribute_value("key")
       end
 
       def translations_to_persist

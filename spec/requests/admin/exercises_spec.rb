@@ -9,6 +9,7 @@ RSpec.describe "Admin::Exercises", type: :request do
 
   let(:create_params) do
     {
+      key: "barbell_bench_press",
       active: "1",
       body_part_id: body_part.id,
       muscle_group_id: muscle_group.id,
@@ -88,6 +89,7 @@ RSpec.describe "Admin::Exercises", type: :request do
     it "redirects to the index" do
       perform_request
 
+      expect(Exercise.order(:created_at).last.key).to eq("barbell_bench_press")
       expect(response).to redirect_to(admin_exercises_path)
     end
 

@@ -43,10 +43,14 @@ ru:
         save: "Сохранить"
       fields:
         active: "Активно"
+        key: "Ключ"
         locale_heading: "Перевод: %{locale_name}"
         name: "Название"
+        position: "Позиция"
       errors:
         heading: "Исправьте ошибки:"
+      meta:
+        key_position: "Ключ: %{key}. Позиция: %{position}."
       flash:
         created: "%{resource} создан."
         updated: "%{resource} обновлён."
@@ -109,6 +113,7 @@ ru:
         subtitle: "Обновите классификацию, переводы и синонимы для поиска."
       meta:
         classification: "Часть тела: %{body_part}. Группа мышц: %{muscle_group}. Инвентарь: %{equipment_type}."
+        key: "Ключ: %{key}."
         tags: "Теги: %{tags}"
   authorization:
     not_allowed: "У вас нет доступа к этой странице."

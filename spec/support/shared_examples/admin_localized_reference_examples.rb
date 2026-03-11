@@ -7,8 +7,11 @@ RSpec.shared_examples "admin localized reference management" do
   let(:destroy_path) { public_send(destroy_path_helper, record) }
   let(:update_path) { public_send(member_path_helper, record) }
   let(:record) { create(factory_name) }
+  let(:resource_key_value) { "resource_key" }
   let(:create_params) do
     {
+      key: resource_key_value,
+      position: "10",
       active: "1",
       translations: {
         en: { name: "English name" },
@@ -86,6 +89,8 @@ RSpec.shared_examples "admin localized reference management" do
     context "with invalid attributes" do
       let(:create_params) do
         {
+          key: resource_key_value,
+          position: "10",
           active: "1",
           translations: {
             en: { name: "" },
@@ -119,6 +124,7 @@ RSpec.shared_examples "admin localized reference management" do
     end
     let(:update_params) do
       {
+        position: "5",
         active: "0",
         translations: {
           en: { name: "After EN" },
@@ -131,6 +137,7 @@ RSpec.shared_examples "admin localized reference management" do
       perform_update
 
       expect(record.reload).not_to be_active
+      expect(record.position).to eq(5)
       expect(model_class.find(record.id).localized_name(:en)).to eq("After EN")
       expect(model_class.find(record.id).localized_name(:ru)).to eq("После RU")
     end
