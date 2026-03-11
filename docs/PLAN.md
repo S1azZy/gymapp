@@ -6,9 +6,11 @@ Completed:
 - Phase 0 bootstrap
 - Phase 1 auth and app shell
 - Phase 2 iteration 2.1: shared reference-data schema, models, and localized translation tables for the exercise catalog
-
-In progress:
 - Phase 2 iteration 2.2: admin CRUD, seed baseline catalog, and user-facing catalog browsing surfaces
+- Phase 2 iteration 2.3: localized synonym search plus reference-data policy/request/system coverage
+
+Next:
+- Phase 3 iteration 3.1: workout template CRUD, ordered template exercises, and integrated exercise picker UX
 
 ## MVP baseline
 
@@ -48,14 +50,13 @@ The MVP must cover the baseline users expect from mainstream workout trackers be
 - Shared models, factories, and model specs
 - SQL-only migrations with UUIDv7/FK/index constraints
 
-#### Iteration 2.2 [next]
+#### Iteration 2.2 [completed]
 - Admin CRUD for reference data
 - Seed baseline catalog
 - User-facing exercise catalog browsing
 - Search and filtering by classification/tag
 
-#### Iteration 2.3 [next]
-- Exercise picker UX for templates and workout logging
+#### Iteration 2.3 [completed]
 - Localized synonym matching in catalog search
 - Reference-data policy coverage and request/system specs
 
@@ -63,6 +64,7 @@ The MVP must cover the baseline users expect from mainstream workout trackers be
 #### Iteration 3.1
 - Workout template CRUD
 - Ordered template exercises
+- Exercise picker UX reused by template authoring
 - Template detail screen optimized for mobile
 
 #### Iteration 3.2
