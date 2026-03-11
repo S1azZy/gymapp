@@ -24,6 +24,14 @@ class Exercise < ApplicationRecord
     translation_for(locale)&.name
   end
 
+  def localized_description(locale = I18n.locale)
+    translation_for(locale)&.description
+  end
+
+  def localized_synonyms(locale = I18n.locale)
+    translation_for(locale)&.synonyms || []
+  end
+
   private
 
   def key_is_immutable

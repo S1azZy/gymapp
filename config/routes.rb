@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   resources :users, only: %i[new create]
   resource :session, only: %i[new create destroy]
+  resources :exercises, only: %i[index show]
   namespace :admin do
     get "/", to: "dashboard#show", as: :dashboard
     resources :body_parts, except: :show

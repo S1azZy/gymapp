@@ -4,6 +4,7 @@ ru:
   navigation:
     admin: "Админка"
     dashboard: "Панель"
+    exercises: "Упражнения"
     language: "Переключение языка"
     primary: "Основная навигация"
     sign_in: "Войти"
@@ -16,6 +17,35 @@ ru:
   dashboard:
     title: "Панель"
     subtitle: "Вы вошли как %{email}."
+  catalog:
+    exercises:
+      eyebrow: "Каталог упражнений"
+      filters:
+        any_body_part: "Любая часть тела"
+        any_equipment_type: "Любой инвентарь"
+        any_muscle_group: "Любая группа мышц"
+        any_tag: "Любой тег"
+        apply: "Применить фильтры"
+        body_part: "Часть тела"
+        equipment_type: "Инвентарь"
+        muscle_group: "Группа мышц"
+        query: "Поиск"
+        query_placeholder: "Название или синоним"
+        reset: "Сбросить"
+        tag: "Тег"
+      index:
+        title: "Упражнения"
+        subtitle: "Просматривайте общий каталог упражнений с переводами, тегами и фильтрами."
+        empty: "По текущим фильтрам упражнения не найдены."
+      meta:
+        classification: "Часть тела: %{body_part}. Группа мышц: %{muscle_group}. Инвентарь: %{equipment_type}."
+        synonyms: "Синонимы: %{synonyms}"
+      show:
+        back: "Назад к упражнениям"
+        classification: "Классификация"
+        description: "Описание"
+        synonyms: "Синонимы"
+        tags: "Теги"
   admin:
     dashboard:
       eyebrow: "Админ-зона"
