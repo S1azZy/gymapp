@@ -222,7 +222,8 @@ CREATE TABLE public.users (
     password_digest text NOT NULL,
     role character varying DEFAULT 'member'::character varying NOT NULL,
     created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    preferred_locale character varying DEFAULT 'en'::character varying NOT NULL
 );
 
 
@@ -597,6 +598,7 @@ ALTER TABLE ONLY public.user_sessions
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20260311120000'),
 ('20260311112200'),
 ('20260311112100'),
 ('20260311112000'),
@@ -612,4 +614,3 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20260311111000'),
 ('20260306150000'),
 ('20260306140000');
-

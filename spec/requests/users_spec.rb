@@ -41,6 +41,13 @@ RSpec.describe "Users", type: :request do
 
       expect(response).to redirect_to(dashboard_path)
     end
+
+    it "stores the current locale as the user's preferred locale" do
+      get root_path(locale: :ru)
+      perform_request
+
+      expect(User.order(:created_at).last.preferred_locale).to eq("ru")
+    end
   end
 
   describe "POST /users with invalid attributes" do

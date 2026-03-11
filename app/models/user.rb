@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  SUPPORTED_LOCALES = %w[en ru].freeze
+
   has_secure_password
 
   enum :role, { member: "member", admin: "admin" }, default: :member, validate: true
@@ -13,5 +15,6 @@ class User < ApplicationRecord
     uniqueness: { case_sensitive: false },
     format: { with: URI::MailTo::EMAIL_REGEXP },
     length: { maximum: 255 }
+  validates :preferred_locale, presence: true, inclusion: { in: SUPPORTED_LOCALES }
   validates :password, length: { minimum: 12 }, allow_nil: true
 end

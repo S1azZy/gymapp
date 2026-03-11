@@ -23,3 +23,4 @@
 - Started Phase 2 (iteration 2.1): added reference-data schema and models for the shared exercise catalog with SQL-only migrations (1 file per table), strict UUIDv7/FK/index rules, factories, and model-level RSpec coverage.
 - Standardized localization storage for dynamic catalog/reference data via per-entity translation tables (`*_translations`), including exercise synonyms stored per locale.
 - Refined the canonical MVP roadmap around the current `main` branch state: marked completed phases, split the remaining work into smaller baseline-first iterations, and promoted missing must-have workout-tracker features into the plan and foundations docs.
+- Added persistent locale preferences: authenticated users now store `preferred_locale` in `users`, guests use a signed cookie, and locale resolution now falls back through params, user preference, cookie, `Accept-Language`, and then the app default.

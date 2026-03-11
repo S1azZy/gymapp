@@ -8,7 +8,8 @@ RSpec.describe Auth::Users::Create do
       {
         email: "new-user@example.com",
         password: "supersecure123",
-        password_confirmation: "supersecure123"
+        password_confirmation: "supersecure123",
+        preferred_locale: "ru"
       }
     end
 
@@ -24,6 +25,10 @@ RSpec.describe Auth::Users::Create do
       normalized_result = described_class.call(**params.merge(email: " NEW-USER@example.com "))
 
       expect(normalized_result.value!.email).to eq("new-user@example.com")
+    end
+
+    it "persists the preferred locale" do
+      expect(result.value!.preferred_locale).to eq("ru")
     end
 
     context "with invalid attributes" do

@@ -11,6 +11,8 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of(:email) }
   it { is_expected.to validate_length_of(:email).is_at_most(255) }
   it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+  it { is_expected.to validate_presence_of(:preferred_locale) }
+  it { is_expected.to validate_inclusion_of(:preferred_locale).in_array(%w[en ru]) }
 
   it do
     expect(user)
