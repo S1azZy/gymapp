@@ -85,4 +85,37 @@ module ApplicationHelper
   def localized_option_name(record)
     record.localized_name || record.localized_name(:en) || record.key
   end
+
+  def localized_exercise_name(exercise)
+    exercise.localized_name || exercise.localized_name(:en) || exercise.key
+  end
+
+  def catalog_select_options(records, selected)
+    options_for_select(records.map { |record| [ localized_option_name(record), record.id ] }, selected)
+  end
+
+  def catalog_exercise_classification_text(exercise)
+    t(
+      "catalog.exercises.meta.classification",
+      body_part: localized_option_name(exercise.body_part),
+      muscle_group: localized_option_name(exercise.muscle_group),
+      equipment_type: localized_option_name(exercise.equipment_type)
+    )
+  end
+
+  def catalog_exercise_synonyms(exercise)
+    exercise.localized_synonyms.presence || exercise.localized_synonyms(:en)
+  end
+
+  def catalog_exercise_description(exercise)
+    exercise.localized_description || exercise.localized_description(:en)
+  end
+
+  def catalog_filter_search_field(form, value:, placeholder:)
+    form.search_field(:query, value:, placeholder:)
+  end
+
+  def catalog_filter_select_field(form, field, options, blank_label)
+    form.select(field, options, include_blank: blank_label)
+  end
 end

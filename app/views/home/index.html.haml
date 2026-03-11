@@ -5,6 +5,7 @@
   - if authenticated?
     %p= t("home.signed_in_as", email: current_user.email)
     = link_to t("navigation.dashboard"), dashboard_path, class: "primary-link"
+    = secondary_link_to t("navigation.exercises"), exercises_path
     - if current_user.admin?
       = secondary_link_to t("navigation.admin"), admin_dashboard_path
   - else

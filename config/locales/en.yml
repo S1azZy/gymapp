@@ -4,6 +4,7 @@ en:
   navigation:
     admin: "Admin"
     dashboard: "Dashboard"
+    exercises: "Exercises"
     language: "Language switcher"
     primary: "Primary navigation"
     sign_in: "Sign in"
@@ -16,6 +17,35 @@ en:
   dashboard:
     title: "Dashboard"
     subtitle: "You are signed in as %{email}."
+  catalog:
+    exercises:
+      eyebrow: "Exercise catalog"
+      filters:
+        any_body_part: "Any body part"
+        any_equipment_type: "Any equipment"
+        any_muscle_group: "Any muscle group"
+        any_tag: "Any tag"
+        apply: "Apply filters"
+        body_part: "Body part"
+        equipment_type: "Equipment"
+        muscle_group: "Muscle group"
+        query: "Search"
+        query_placeholder: "Name or synonym"
+        reset: "Reset"
+        tag: "Tag"
+      index:
+        title: "Exercises"
+        subtitle: "Browse the shared exercise catalog with localized names, tags, and filters."
+        empty: "No exercises matched the current filters."
+      meta:
+        classification: "Body part: %{body_part}. Muscle group: %{muscle_group}. Equipment: %{equipment_type}."
+        synonyms: "Synonyms: %{synonyms}"
+      show:
+        back: "Back to exercises"
+        classification: "Classification"
+        description: "Description"
+        synonyms: "Synonyms"
+        tags: "Tags"
   admin:
     dashboard:
       eyebrow: "Admin area"

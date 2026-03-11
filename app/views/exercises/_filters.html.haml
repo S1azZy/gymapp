@@ -1,0 +1,54 @@
+= form_with(**filter_form_options) do |form|
+  :ruby
+    search_input = catalog_filter_search_field(
+      form,
+      value: query_value,
+      placeholder: query_placeholder
+    )
+    body_part_select = catalog_filter_select_field(
+      form,
+      :body_part_id,
+      body_part_options,
+      any_body_part_label
+    )
+    muscle_group_select = catalog_filter_select_field(
+      form,
+      :muscle_group_id,
+      muscle_group_options,
+      any_muscle_group_label
+    )
+    equipment_type_select = catalog_filter_select_field(
+      form,
+      :equipment_type_id,
+      equipment_type_options,
+      any_equipment_type_label
+    )
+    tag_select = catalog_filter_select_field(
+      form,
+      :tag_id,
+      tag_options,
+      any_tag_label
+    )
+    apply_button = form.submit(
+      t("catalog.exercises.filters.apply"),
+      class: "primary-link catalog-filters__submit"
+    )
+  .catalog-filters__grid
+    .catalog-filters__field.catalog-filters__field--wide
+      = form.label :query, t("catalog.exercises.filters.query")
+      = search_input
+    .catalog-filters__field
+      = form.label :body_part_id, body_part_label
+      = body_part_select
+    .catalog-filters__field
+      = form.label :muscle_group_id, muscle_group_label
+      = muscle_group_select
+    .catalog-filters__field
+      = form.label :equipment_type_id, equipment_type_label
+      = equipment_type_select
+    .catalog-filters__field
+      = form.label :tag_id, tag_label
+      = tag_select
+  .catalog-filters__actions
+    = apply_button
+    = secondary_link_to t("catalog.exercises.filters.reset"), exercises_path

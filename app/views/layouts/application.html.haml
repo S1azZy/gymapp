@@ -29,6 +29,7 @@
         %nav.app-nav{ aria: { label: t("navigation.primary") } }
           - if authenticated?
             = app_nav_link_to t("navigation.dashboard"), dashboard_path
+            = app_nav_link_to t("navigation.exercises"), exercises_path
             - if current_user.admin?
               = app_nav_link_to t("navigation.admin"), admin_dashboard_path
             = app_nav_button_to t("navigation.sign_out"),

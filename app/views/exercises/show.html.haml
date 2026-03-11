@@ -1,0 +1,43 @@
+- content_for :title, localized_exercise_name(@exercise)
+
+%main.catalog-page
+  .catalog-page__header
+    .catalog-page__heading
+      %p.catalog-page__eyebrow= t("catalog.exercises.eyebrow")
+      %h1= localized_exercise_name(@exercise)
+      %p.catalog-page__subtitle= @exercise.key
+    = secondary_link_to t("catalog.exercises.show.back"), exercises_path
+
+  %section.catalog-detail
+    .catalog-detail__section
+      %h2= t("catalog.exercises.show.classification")
+      %dl.catalog-detail__list
+        %div
+          %dt= t("catalog.exercises.filters.body_part")
+          %dd= localized_option_name(@exercise.body_part)
+        %div
+          %dt= t("catalog.exercises.filters.muscle_group")
+          %dd= localized_option_name(@exercise.muscle_group)
+        %div
+          %dt= t("catalog.exercises.filters.equipment_type")
+          %dd= localized_option_name(@exercise.equipment_type)
+    - description = @exercise.localized_description
+    - description ||= @exercise.localized_description(:en)
+    - if description.present?
+      .catalog-detail__section
+        %h2= t("catalog.exercises.show.description")
+        %p= description
+    - synonyms = @exercise.localized_synonyms
+    - synonyms = @exercise.localized_synonyms(:en) if synonyms.blank?
+    - if synonyms.any?
+      .catalog-detail__section
+        %h2= t("catalog.exercises.show.synonyms")
+        .catalog-chip-list
+          - synonyms.each do |synonym|
+            %span.catalog-chip= synonym
+    - if @exercise.tags.any?
+      .catalog-detail__section
+        %h2= t("catalog.exercises.show.tags")
+        .catalog-chip-list
+          - @exercise.tags.order(:position, :created_at).each do |tag|
+            %span.catalog-chip= localized_option_name(tag)

@@ -1,0 +1,27 @@
+%article.catalog-card
+  :ruby
+    classification_text = catalog_exercise_classification_text(exercise)
+    description = catalog_exercise_description(exercise)
+    synonyms = catalog_exercise_synonyms(exercise)
+    exercise_link = link_to(
+      localized_exercise_name(exercise),
+      exercise_path(exercise),
+      class: "catalog-card__title"
+    )
+    synonyms_text = t(
+      "catalog.exercises.meta.synonyms",
+      synonyms: synonyms.join(", ")
+    )
+  .catalog-card__header
+    %div
+      %p.catalog-card__key= exercise.key
+      %h2= exercise_link
+    - if exercise.tags.any?
+      .catalog-chip-list
+        - exercise.tags.order(:position, :created_at).each do |tag|
+          %span.catalog-chip= localized_option_name(tag)
+  %p.catalog-card__meta= classification_text
+  - if description.present?
+    %p.catalog-card__description= description
+  - if synonyms.any?
+    %p.catalog-card__synonyms= synonyms_text

@@ -1,0 +1,63 @@
+- content_for :title, t("catalog.exercises.index.title")
+
+%main.catalog-page
+  .catalog-page__header
+    .catalog-page__heading
+      %p.catalog-page__eyebrow= t("catalog.exercises.eyebrow")
+      %h1= t("catalog.exercises.index.title")
+      %p.catalog-page__subtitle= t("catalog.exercises.index.subtitle")
+
+  :ruby
+    filter_form_options = {
+      url: exercises_path,
+      method: :get,
+      scope: :filters,
+      class: "catalog-filters"
+    }
+    query_value = catalog_filters[:query]
+    body_part_id = catalog_filters[:body_part_id]
+    muscle_group_id = catalog_filters[:muscle_group_id]
+    equipment_type_id = catalog_filters[:equipment_type_id]
+    tag_id = catalog_filters[:tag_id]
+    query_placeholder = t("catalog.exercises.filters.query_placeholder")
+    any_body_part_label = t("catalog.exercises.filters.any_body_part")
+    any_muscle_group_label = t("catalog.exercises.filters.any_muscle_group")
+    any_equipment_type_label = t("catalog.exercises.filters.any_equipment_type")
+    any_tag_label = t("catalog.exercises.filters.any_tag")
+    body_part_label = t("catalog.exercises.filters.body_part")
+    muscle_group_label = t("catalog.exercises.filters.muscle_group")
+    equipment_type_label = t("catalog.exercises.filters.equipment_type")
+    tag_label = t("catalog.exercises.filters.tag")
+    body_part_options = catalog_select_options(@body_parts, body_part_id)
+    muscle_group_options = catalog_select_options(
+      @muscle_groups,
+      muscle_group_id
+    )
+    equipment_type_options = catalog_select_options(
+      @equipment_types,
+      equipment_type_id
+    )
+    tag_options = catalog_select_options(@tags, tag_id)
+  = render "filters",
+    filter_form_options: filter_form_options,
+    query_value: query_value,
+    query_placeholder: query_placeholder,
+    body_part_label: body_part_label,
+    body_part_options: body_part_options,
+    any_body_part_label: any_body_part_label,
+    muscle_group_label: muscle_group_label,
+    muscle_group_options: muscle_group_options,
+    any_muscle_group_label: any_muscle_group_label,
+    equipment_type_label: equipment_type_label,
+    equipment_type_options: equipment_type_options,
+    any_equipment_type_label: any_equipment_type_label,
+    tag_label: tag_label,
+    tag_options: tag_options,
+    any_tag_label: any_tag_label
+
+  - if @exercises.any?
+    .catalog-grid
+      - @exercises.each do |exercise|
+        = render "exercise_card", exercise: exercise
+  - else
+    %p.catalog-empty= t("catalog.exercises.index.empty")
