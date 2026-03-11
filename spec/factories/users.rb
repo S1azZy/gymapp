@@ -4,6 +4,7 @@ FactoryBot.define do
     password { "supersecure123" }
     password_confirmation { password }
     role { "member" }
+    preferred_locale { "en" }
 
     trait :admin do
       role { "admin" }

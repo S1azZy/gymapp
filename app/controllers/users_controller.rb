@@ -10,7 +10,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    result = Auth::Users::Create.call(user_params.to_h.symbolize_keys)
+    result = Auth::Users::Create.call(
+      user_params.to_h.symbolize_keys.merge(preferred_locale: resolved_locale.to_s)
+    )
 
     if result.success?
       start_new_session_for(result.value!)
