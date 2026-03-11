@@ -12,14 +12,14 @@ Gym App is a production-minded, mobile-first training tracker.
 ## MVP scope
 Must-have:
 - Email/password auth: sign up, sign in/out, password reset
-- Shared exercise catalog with classifications (body part, muscle group, equipment, tags)
+- Shared exercise catalog with classifications (body part, muscle group, equipment, tags), localized names/synonyms, and browse/search/filter flows
 - Workout templates (reusable plans with ordered exercises)
-- Workout sessions (real execution, separate from templates)
-- Plan vs fact flow, draft workouts, set logging (weight/reps)
-- Rest timer and last-weight hint
+- Workout sessions (real execution, separate from templates, with workout facts preserved if templates change later)
+- Plan vs fact flow, draft workouts with resume/discard, set logging (weight/reps), and simple workout notes
+- Rest timer and last-weight / previous-performance hint
 - Wellbeing score 1..5 per workout
-- History calendar
-- Statistics: best set, estimated 1RM, basic charts
+- History calendar and completed workout detail screen
+- Statistics: best set, PR markers, estimated 1RM, basic charts
 - Admin area
 - RU/EN localization from day one
 
