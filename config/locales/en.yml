@@ -65,6 +65,51 @@ en:
         tags:
           plural: "Tags"
           singular: "tag"
+        exercises:
+          plural: "Exercises"
+          singular: "exercise"
+    exercises:
+      eyebrow: "Exercise catalog"
+      fallback_name: "Unnamed exercise"
+      confirm_delete: "Delete this exercise?"
+      actions:
+        cancel: "Cancel"
+        delete: "Delete"
+        edit: "Edit"
+        new: "New exercise"
+        save: "Save"
+      fields:
+        body_part: "Body part"
+        description: "Description"
+        equipment_type: "Equipment type"
+        muscle_group: "Muscle group"
+        synonyms: "Synonyms"
+        synonyms_hint: "Comma-separated aliases used for search."
+        tags: "Tags"
+      prompts:
+        body_part: "Select a body part"
+        equipment_type: "Select equipment"
+        muscle_group: "Select a muscle group"
+      errors:
+        heading: "Please fix the following errors:"
+      flash:
+        created: "Exercise created."
+        updated: "Exercise updated."
+        destroyed: "Exercise deleted."
+        destroy_failed: "Could not delete the exercise."
+      index:
+        title: "Exercises"
+        subtitle: "Manage the shared exercise catalog with localized details and tags."
+        empty: "No exercises have been created yet."
+      new:
+        title: "New exercise"
+        subtitle: "Set classification, localized details, and search synonyms."
+      edit:
+        title: "Edit exercise"
+        subtitle: "Update classification, localized details, and search synonyms."
+      meta:
+        classification: "Body part: %{body_part}. Muscle group: %{muscle_group}. Equipment: %{equipment_type}."
+        tags: "Tags: %{tags}"
   authorization:
     not_allowed: "You do not have access to that page."
   auth:

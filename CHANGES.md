@@ -25,3 +25,4 @@
 - Refined the canonical MVP roadmap around the current `main` branch state: marked completed phases, split the remaining work into smaller baseline-first iterations, and promoted missing must-have workout-tracker features into the plan and foundations docs.
 - Added persistent locale preferences: authenticated users now store `preferred_locale` in `users`, guests use a signed cookie, and locale resolution now falls back through params, user preference, cookie, `Accept-Language`, and then the app default.
 - Added admin CRUD for localized reference data (`body_parts`, `muscle_groups`, `equipment_types`, `tags`) with a shared Rails admin UI, yabi-based persistence interactors, and request coverage for admin/member/guest access.
+- Added admin exercise CRUD with localized `name/description/synonyms`, classification links, tag assignment, and yabi-based persistence covered by request and interactor specs.

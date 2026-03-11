@@ -65,6 +65,51 @@ ru:
         tags:
           plural: "Теги"
           singular: "тег"
+        exercises:
+          plural: "Упражнения"
+          singular: "упражнение"
+    exercises:
+      eyebrow: "Каталог упражнений"
+      fallback_name: "Упражнение без названия"
+      confirm_delete: "Удалить это упражнение?"
+      actions:
+        cancel: "Отмена"
+        delete: "Удалить"
+        edit: "Редактировать"
+        new: "Создать упражнение"
+        save: "Сохранить"
+      fields:
+        body_part: "Часть тела"
+        description: "Описание"
+        equipment_type: "Инвентарь"
+        muscle_group: "Группа мышц"
+        synonyms: "Синонимы"
+        synonyms_hint: "Псевдонимы через запятую для локализованного поиска."
+        tags: "Теги"
+      prompts:
+        body_part: "Выберите часть тела"
+        equipment_type: "Выберите инвентарь"
+        muscle_group: "Выберите группу мышц"
+      errors:
+        heading: "Исправьте ошибки:"
+      flash:
+        created: "Упражнение создано."
+        updated: "Упражнение обновлено."
+        destroyed: "Упражнение удалено."
+        destroy_failed: "Не удалось удалить упражнение."
+      index:
+        title: "Упражнения"
+        subtitle: "Управляйте общим каталогом упражнений, переводами и тегами."
+        empty: "Упражнения пока не созданы."
+      new:
+        title: "Новое упражнение"
+        subtitle: "Укажите классификацию, переводы и синонимы для поиска."
+      edit:
+        title: "Редактировать упражнение"
+        subtitle: "Обновите классификацию, переводы и синонимы для поиска."
+      meta:
+        classification: "Часть тела: %{body_part}. Группа мышц: %{muscle_group}. Инвентарь: %{equipment_type}."
+        tags: "Теги: %{tags}"
   authorization:
     not_allowed: "У вас нет доступа к этой странице."
   auth:

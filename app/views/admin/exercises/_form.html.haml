@@ -1,0 +1,82 @@
+= form_with model: [ :admin, exercise_collection ],
+  class: "reference-form" do |form|
+  - if exercise_collection.errors.any?
+    .form-errors
+      %h2= t("admin.exercises.errors.heading")
+      %ul
+        - exercise_collection.errors.full_messages.each do |message|
+          %li= message
+
+  .reference-form__toggle
+    = form.label :active,
+      t("admin.reference_data.fields.active"),
+      class: "reference-form__checkbox-label"
+    = form.check_box :active
+
+  .exercise-form__references
+    .auth-form__field
+      = form.label :body_part_id, t("admin.exercises.fields.body_part")
+      = form.collection_select :body_part_id,
+        exercise_reference_options(BodyPart),
+        :id,
+        :localized_name,
+        { prompt: t("admin.exercises.prompts.body_part") }
+    .auth-form__field
+      = form.label :muscle_group_id, t("admin.exercises.fields.muscle_group")
+      = form.collection_select :muscle_group_id,
+        exercise_reference_options(MuscleGroup),
+        :id,
+        :localized_name,
+        { prompt: t("admin.exercises.prompts.muscle_group") }
+    .auth-form__field
+      = form.label :equipment_type_id,
+        t("admin.exercises.fields.equipment_type")
+      = form.collection_select :equipment_type_id,
+        exercise_reference_options(EquipmentType),
+        :id,
+        :localized_name,
+        { prompt: t("admin.exercises.prompts.equipment_type") }
+
+  .exercise-form__tags
+    %h2= t("admin.exercises.fields.tags")
+    .exercise-form__tag-options
+      - exercise_reference_options(Tag).each do |tag|
+        - checked = exercise_tags_for_form.include?(tag.id)
+        %label.exercise-form__tag-option
+          = check_box_tag "exercise[tag_ids][]", tag.id, checked
+          %span= tag.localized_name || tag.localized_name(:en)
+    = hidden_field_tag "exercise[tag_ids][]", ""
+
+  .reference-form__translations
+    - available_locales.each do |locale|
+      - translation = exercise_translations_for_form.fetch(locale.to_s)
+      %section.reference-form__locale
+        %h2= admin_reference_locale_heading(locale)
+        .auth-form__field
+          - name_id = "exercise_translations_#{locale}_name"
+          %label{ for: name_id }= t("admin.reference_data.fields.name")
+          = text_field_tag "exercise[translations][#{locale}][name]",
+            translation.name,
+            id: name_id
+        .auth-form__field
+          - description_id = "exercise_translations_#{locale}_description"
+          %label{ for: description_id }
+            = t("admin.exercises.fields.description")
+          = text_area_tag "exercise[translations][#{locale}][description]",
+            translation.description,
+            id: description_id,
+            rows: 4
+        .auth-form__field
+          - synonyms_id = "exercise_translations_#{locale}_synonyms_csv"
+          %label{ for: synonyms_id }= t("admin.exercises.fields.synonyms")
+          = text_field_tag "exercise[translations][#{locale}][synonyms_csv]",
+            translation.synonyms_csv,
+            id: synonyms_id
+          %p.exercise-form__hint= t("admin.exercises.fields.synonyms_hint")
+
+  .reference-form__actions
+    = form.submit t("admin.exercises.actions.save"),
+      class: "auth-form__submit"
+    = link_to t("admin.exercises.actions.cancel"),
+      admin_exercises_path,
+      class: "secondary-link"

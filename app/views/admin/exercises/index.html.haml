@@ -1,0 +1,60 @@
+- content_for :title, t("admin.exercises.index.title")
+
+%main.admin-page
+  .admin-page__header
+    .admin-page__heading
+      %p.admin-page__eyebrow= t("admin.exercises.eyebrow")
+      %h1= t("admin.exercises.index.title")
+      %p.admin-page__subtitle= t("admin.exercises.index.subtitle")
+    = link_to t("admin.exercises.actions.new"),
+      new_admin_exercise_path,
+      class: "primary-link"
+
+  - if @exercises.any?
+    .reference-grid
+      - @exercises.each do |exercise|
+        %section.reference-card
+          .reference-card__header
+            :ruby
+              exercise_title = exercise.localized_name ||
+                exercise.localized_name(:en) ||
+                t("admin.exercises.fallback_name")
+              status_key = exercise.active? ? "active" : "inactive"
+            %h2= exercise_title
+            %span{ class: "reference-status reference-status--#{status_key}" }
+              = admin_reference_status_label(status_key)
+          :ruby
+            body_part_name = localized_option_name(exercise.body_part)
+            muscle_group_name = localized_option_name(exercise.muscle_group)
+            equipment_type_name = localized_option_name(exercise.equipment_type)
+            classification_text = t(
+              "admin.exercises.meta.classification",
+              body_part: body_part_name,
+              muscle_group: muscle_group_name,
+              equipment_type: equipment_type_name
+            )
+          %p= classification_text
+          - if exercise.tags.any?
+            :ruby
+              tags_text = exercise.tags.map do |tag|
+                localized_option_name(tag)
+              end.join(", ")
+            %p= t("admin.exercises.meta.tags", tags: tags_text)
+          %dl.reference-card__translations
+            - available_locales.each do |locale|
+              - translation = exercise.translation_for(locale)
+              .reference-card__translation
+                %dt= locale_label(locale)
+                %dd= translation&.name || admin_reference_missing_translation
+          .reference-card__actions
+            - confirm_delete = t("admin.exercises.confirm_delete")
+            = link_to t("admin.exercises.actions.edit"),
+              edit_admin_exercise_path(exercise),
+              class: "secondary-link secondary-link--compact"
+            = button_to t("admin.exercises.actions.delete"),
+              admin_exercise_path(exercise),
+              method: :delete,
+              class: "danger-button",
+              form: { data: { turbo_confirm: confirm_delete } }
+  - else
+    %p.reference-empty= t("admin.exercises.index.empty")
