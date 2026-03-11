@@ -92,11 +92,13 @@ module Admin
     end
 
     def exercise_reference_options(model_class)
-      model_class.includes(model_class.reflect_on_all_associations(:has_many).first.name).order(created_at: :asc)
+      translation_assoc = model_class.reflect_on_all_associations(:has_many).first.name
+      model_class.includes(translation_assoc).order(position: :asc, created_at: :asc)
     end
 
     def exercise_attributes
       params.fetch(:exercise, {}).permit(
+        :key,
         :active,
         :body_part_id,
         :muscle_group_id,

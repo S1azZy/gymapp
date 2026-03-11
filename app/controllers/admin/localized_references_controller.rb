@@ -5,13 +5,16 @@ module Admin
     helper_method :collection_path, :new_record_path, :resource_label, :resource_labels, :translations_for_form
 
     def index
-      @records = model_class.includes(translation_association).order(created_at: :desc)
+      @records = model_class.includes(translation_association).order(position: :asc, created_at: :asc)
 
       render "admin/localized_references/index"
     end
 
     def new
-      @record = model_class.new(active: true)
+      @record = model_class.new(
+        active: true,
+        position: Constants::DEFAULT_REFERENCE_POSITION
+      )
       ensure_translations(@record)
 
       render "admin/localized_references/new"
@@ -24,8 +27,14 @@ module Admin
     end
 
     def create
-      @record = model_class.new(active: active_value)
-      result = Admin::ReferenceData::UpsertLocalizedRecord.call(record: @record, active: active_value, translations: translations_value)
+      @record = model_class.new
+      result = Admin::ReferenceData::UpsertLocalizedRecord.call(
+        record: @record,
+        key: key_value,
+        position: position_value,
+        active: active_value,
+        translations: translations_value
+      )
 
       if result.success?
         redirect_to collection_path, notice: t("admin.reference_data.flash.created", resource: resource_label)
@@ -35,7 +44,13 @@ module Admin
     end
 
     def update
-      result = Admin::ReferenceData::UpsertLocalizedRecord.call(record: @record, active: active_value, translations: translations_value)
+      result = Admin::ReferenceData::UpsertLocalizedRecord.call(
+        record: @record,
+        key: key_value,
+        position: position_value,
+        active: active_value,
+        translations: translations_value
+      )
 
       if result.success?
         redirect_to collection_path, notice: t("admin.reference_data.flash.updated", resource: resource_label)
@@ -100,12 +115,23 @@ module Admin
       ActiveModel::Type::Boolean.new.cast(reference_params[:active])
     end
 
+    def key_value
+      value = reference_params[:key].to_s
+      value.presence || @record&.key.to_s
+    end
+
+    def position_value
+      reference_params[:position].to_i
+    end
+
     def translations_value
       reference_params.fetch(:translations, {}).to_h
     end
 
     def reference_params
       params.fetch(model_class.model_name.param_key, {}).permit(
+        :key,
+        :position,
         :active,
         translations: Constants::SUPPORTED_LOCALE_KEYS.index_with { [ :name ] }
       )

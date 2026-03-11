@@ -43,10 +43,14 @@ en:
         save: "Save"
       fields:
         active: "Active"
+        key: "Key"
         locale_heading: "%{locale_name} translation"
         name: "Name"
+        position: "Position"
       errors:
         heading: "Please fix the following errors:"
+      meta:
+        key_position: "Key: %{key}. Position: %{position}."
       flash:
         created: "%{resource} created."
         updated: "%{resource} updated."
@@ -109,6 +113,7 @@ en:
         subtitle: "Update classification, localized details, and search synonyms."
       meta:
         classification: "Body part: %{body_part}. Muscle group: %{muscle_group}. Equipment: %{equipment_type}."
+        key: "Key: %{key}."
         tags: "Tags: %{tags}"
   authorization:
     not_allowed: "You do not have access to that page."

@@ -8,6 +8,9 @@
           %li= message
 
   .reference-form__toggle
+    .auth-form__field
+      = form.label :key, t("admin.reference_data.fields.key")
+      = form.text_field :key, readonly: exercise_collection.persisted?
     = form.label :active,
       t("admin.reference_data.fields.active"),
       class: "reference-form__checkbox-label"

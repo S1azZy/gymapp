@@ -48,7 +48,9 @@ CREATE TABLE public.body_parts (
     id uuid DEFAULT uuidv7() NOT NULL,
     active boolean DEFAULT true NOT NULL,
     created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    key text NOT NULL,
+    "position" integer DEFAULT 100 NOT NULL
 );
 
 
@@ -74,7 +76,9 @@ CREATE TABLE public.equipment_types (
     id uuid DEFAULT uuidv7() NOT NULL,
     active boolean DEFAULT true NOT NULL,
     created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    key text NOT NULL,
+    "position" integer DEFAULT 100 NOT NULL
 );
 
 
@@ -118,7 +122,8 @@ CREATE TABLE public.exercises (
     equipment_type_id uuid NOT NULL,
     active boolean DEFAULT true NOT NULL,
     created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    key text NOT NULL
 );
 
 
@@ -144,7 +149,9 @@ CREATE TABLE public.muscle_groups (
     id uuid DEFAULT uuidv7() NOT NULL,
     active boolean DEFAULT true NOT NULL,
     created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    key text NOT NULL,
+    "position" integer DEFAULT 100 NOT NULL
 );
 
 
@@ -194,7 +201,9 @@ CREATE TABLE public.tags (
     id uuid DEFAULT uuidv7() NOT NULL,
     active boolean DEFAULT true NOT NULL,
     created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    key text NOT NULL,
+    "position" integer DEFAULT 100 NOT NULL
 );
 
 
@@ -377,10 +386,38 @@ CREATE INDEX index_body_part_translations_on_locale_and_lower_name ON public.bod
 
 
 --
+-- Name: index_body_parts_on_key; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_body_parts_on_key ON public.body_parts USING btree (key);
+
+
+--
+-- Name: index_body_parts_on_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_body_parts_on_position ON public.body_parts USING btree ("position");
+
+
+--
 -- Name: index_equipment_type_translations_on_locale_and_lower_name; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_equipment_type_translations_on_locale_and_lower_name ON public.equipment_type_translations USING btree (locale, lower(name));
+
+
+--
+-- Name: index_equipment_types_on_key; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_equipment_types_on_key ON public.equipment_types USING btree (key);
+
+
+--
+-- Name: index_equipment_types_on_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_equipment_types_on_position ON public.equipment_types USING btree ("position");
 
 
 --
@@ -433,6 +470,13 @@ CREATE INDEX index_exercises_on_equipment_type_id ON public.exercises USING btre
 
 
 --
+-- Name: index_exercises_on_key; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_exercises_on_key ON public.exercises USING btree (key);
+
+
+--
 -- Name: index_exercises_on_muscle_group_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -451,6 +495,20 @@ CREATE INDEX index_muscle_group_translations_on_locale_and_lower_name ON public.
 --
 
 CREATE UNIQUE INDEX index_muscle_group_translations_on_muscle_group_id_and_locale ON public.muscle_group_translations USING btree (muscle_group_id, locale);
+
+
+--
+-- Name: index_muscle_groups_on_key; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_muscle_groups_on_key ON public.muscle_groups USING btree (key);
+
+
+--
+-- Name: index_muscle_groups_on_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_muscle_groups_on_position ON public.muscle_groups USING btree ("position");
 
 
 --
@@ -479,6 +537,20 @@ CREATE INDEX index_tag_translations_on_locale_and_lower_name ON public.tag_trans
 --
 
 CREATE UNIQUE INDEX index_tag_translations_on_tag_id_and_locale ON public.tag_translations USING btree (tag_id, locale);
+
+
+--
+-- Name: index_tags_on_key; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_tags_on_key ON public.tags USING btree (key);
+
+
+--
+-- Name: index_tags_on_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tags_on_position ON public.tags USING btree ("position");
 
 
 --
@@ -598,6 +670,9 @@ ALTER TABLE ONLY public.user_sessions
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20260311130200'),
+('20260311130100'),
+('20260311130000'),
 ('20260311120000'),
 ('20260311112200'),
 ('20260311112100'),
@@ -614,3 +689,4 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20260311111000'),
 ('20260306150000'),
 ('20260306140000');
+

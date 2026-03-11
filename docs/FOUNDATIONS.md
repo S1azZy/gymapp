@@ -97,6 +97,7 @@ Reference data:
 - Business validation belongs to app layer
 - No triggers/stored procedures/extensions unless explicitly approved
 - Dynamic localized reference/catalog data must use base tables plus per-entity `*_translations` tables (no locale-specific columns in base tables).
+- Every dynamic reference/catalog entity must have an immutable `key` used for seeds, imports, lookups, and relations to seeded data; translations must never be used as identifiers.
 
 ## Consistency contract
 - Do not mix multiple interactor styles

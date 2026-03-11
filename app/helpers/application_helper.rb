@@ -83,6 +83,6 @@ module ApplicationHelper
   end
 
   def localized_option_name(record)
-    record.localized_name || record.localized_name(:en)
+    record.localized_name || record.localized_name(:en) || record.key
   end
 end

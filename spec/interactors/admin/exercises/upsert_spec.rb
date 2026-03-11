@@ -11,6 +11,7 @@ RSpec.describe Admin::Exercises::Upsert do
   let(:exercise) { Exercise.new }
   let(:exercise_attributes) do
     {
+      "key" => "barbell_bench_press",
       "active" => "1",
       "body_part_id" => body_part.id,
       "muscle_group_id" => muscle_group.id,
@@ -32,6 +33,7 @@ RSpec.describe Admin::Exercises::Upsert do
   it "normalizes synonyms via the translation model" do
     result
 
+    expect(result.value!.key).to eq("barbell_bench_press")
     expect(result.value!.translation_for(:en).synonyms).to eq([ "bench", "chest press" ])
   end
 

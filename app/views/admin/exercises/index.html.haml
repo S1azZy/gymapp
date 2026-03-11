@@ -23,6 +23,7 @@
             %h2= exercise_title
             %span{ class: "reference-status reference-status--#{status_key}" }
               = admin_reference_status_label(status_key)
+          %p= t("admin.exercises.meta.key", key: exercise.key)
           :ruby
             body_part_name = localized_option_name(exercise.body_part)
             muscle_group_name = localized_option_name(exercise.muscle_group)
