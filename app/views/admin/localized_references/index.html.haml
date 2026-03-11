@@ -1,0 +1,49 @@
+- content_for :title, resource_labels[:plural]
+
+%main.admin-page
+  .admin-page__header
+    .admin-page__heading
+      - resource_plural = resource_labels[:plural]
+      - index_subtitle = admin_reference_index_subtitle(resource_plural)
+      %p.admin-page__eyebrow= t("admin.reference_data.eyebrow")
+      %h1= resource_plural
+      %p.admin-page__subtitle= index_subtitle
+    - new_label = admin_reference_action_label(:new, resource_label)
+    = link_to new_label, new_record_path, class: "primary-link"
+
+  - if @records.any?
+    .reference-grid
+      - @records.each do |record|
+        %section.reference-card
+          .reference-card__header
+            :ruby
+              localized_title = record.localized_name ||
+                record.localized_name(:en) ||
+                resource_label
+              status_key = record.active? ? "active" : "inactive"
+              status_text = admin_reference_status_label(status_key)
+            %h2= localized_title
+            %span{ class: "reference-status reference-status--#{status_key}" }
+              = status_text
+          %dl.reference-card__translations
+            - available_locales.each do |locale|
+              - translated_name = record.localized_name(locale)
+              - translated_name ||= admin_reference_missing_translation
+              .reference-card__translation
+                %dt= locale_label(locale)
+                %dd= translated_name
+          .reference-card__actions
+            :ruby
+              edit_path = edit_polymorphic_path([ :admin, record ])
+              delete_path = polymorphic_path([ :admin, record ])
+              confirm_text = admin_reference_delete_confirmation(resource_label)
+            = link_to admin_reference_action_label(:edit),
+              edit_path,
+              class: "secondary-link secondary-link--compact"
+            = button_to admin_reference_action_label(:delete),
+              delete_path,
+              method: :delete,
+              class: "danger-button",
+              form: { data: { turbo_confirm: confirm_text } }
+  - else
+    %p.reference-empty= admin_reference_empty_text(resource_plural)

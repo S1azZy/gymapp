@@ -1,4 +1,5 @@
 require_relative "boot"
+require_relative "../lib/constants"
 
 require "rails"
 # Pick the frameworks you want:
@@ -29,7 +30,7 @@ module GymApp
     config.autoload_lib(ignore: %w[assets tasks templates])
 
     config.active_record.schema_format = :sql
-    config.i18n.available_locales = %i[en ru]
+    config.i18n.available_locales = Constants::SUPPORTED_LOCALE_KEYS
     config.i18n.default_locale = :en
 
     # Configuration for the application, engines, and railties goes here.

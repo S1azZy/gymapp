@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resource :session, only: %i[new create destroy]
   namespace :admin do
     get "/", to: "dashboard#show", as: :dashboard
+    resources :body_parts, except: :show
+    resources :muscle_groups, except: :show
+    resources :equipment_types, except: :show
+    resources :tags, except: :show
   end
   get "dashboard", to: "dashboard#show"
   root "home#index"

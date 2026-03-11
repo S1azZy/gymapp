@@ -1,0 +1,12 @@
+- content_for :title do
+  = t("admin.reference_data.actions.new", resource: resource_label)
+
+%main.admin-page
+  .admin-page__header
+    .admin-page__heading
+      - page_title = admin_reference_action_label(:new, resource_label)
+      %p.admin-page__eyebrow= t("admin.reference_data.eyebrow")
+      %h1= page_title
+      %p.admin-page__subtitle
+        = admin_reference_form_subtitle(resource_label)
+  = render "form", record: @record
