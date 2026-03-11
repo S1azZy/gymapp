@@ -15,5 +15,5 @@ class User < ApplicationRecord
     format: { with: URI::MailTo::EMAIL_REGEXP },
     length: { maximum: 255 }
   validates :preferred_locale, presence: true, inclusion: { in: Constants::SUPPORTED_LOCALES }
-  validates :password, length: { minimum: 12 }, allow_nil: true
+  validates :password, length: { minimum: 8 }, allow_nil: true
 end

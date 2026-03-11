@@ -235,7 +235,7 @@ en:
         errors_heading: "Please fix the following errors:"
         password: "Password"
         password_confirmation: "Confirm password"
-        password_hint: "Use at least 12 characters."
+        password_hint: "Use at least 8 characters."
         submit: "Create account"
     password_resets:
       new:
