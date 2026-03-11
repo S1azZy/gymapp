@@ -65,6 +65,7 @@ Bounded areas:
 
 Hard boundaries:
 - Template and session are different entities
+- Workout templates are user-owned; shared reference data remains global/admin-managed
 - Session facts must remain valid if template changes later
 - Statistics read workout facts and do not mutate logging flow
 
@@ -79,7 +80,7 @@ Core entities:
 - `SetEntry`
 
 Reference data:
-- `BodyPart`, `MuscleGroup`, `Equipment`, `Tag`
+- `BodyPart`, `MuscleGroup`, `EquipmentType`, `Tag`
 - enum allowed for small stable sets
 - reference tables preferred when metadata/admin/extensibility are required
 

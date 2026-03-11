@@ -11,7 +11,7 @@
 - Updated workflow rules so RuboCop runs with autocorrect by default and test conventions explicitly encourage shared RSpec contexts/examples where they improve clarity.
 - Added sign-up flow with yabi-based user creation, automatic sign-in after registration, localized Haml pages, and full request/interactor coverage.
 - Added password reset request and completion flows with mail delivery, single-use reset tokens, session invalidation, localized Haml pages, and integration-heavy RSpec coverage.
-- Completed phase 2 with session-persisted `ru/en` locale switching, Pundit policies, admin access gate, cache-backed auth rate limiting, localized app shell navigation, and request/policy/system test coverage.
+- Completed the auth/app-shell baseline with session-persisted `ru/en` locale switching, Pundit policies, admin access gate, cache-backed auth rate limiting, localized app shell navigation, and request/policy/system test coverage.
 - Tightened the project scaffold with a stronger `make verify`, `verify-fast` and `doctor` commands, Haml lint in CI, `.editorconfig`, `.gitattributes`, a PR template, and cleaner git/docker ignore rules.
 - Added scaffold completion polish: README badges, real Hotwire importmap runtime wiring, Tailwind Rails integration, Kamal deploy placeholder config, and production SSL defaults.
 
@@ -29,3 +29,4 @@
 - Hardened catalog schema for idempotent seeds and admin UX with stable `key` identifiers, sortable `position` fields, and baseline reference/exercise seeds built entirely on keys rather than translated names.
 - Added the authenticated user-facing exercise catalog with localized list/detail pages, search by name or synonym, and filters by body part, muscle group, equipment type, and tag.
 - Polished the reference-data flow with admin dashboard record counts, quick-create entry points, and end-to-end system coverage from admin catalog management to member browsing.
+- Synced the roadmap and foundations docs with the actual Phase 2 state, clarified template ownership and `EquipmentType` terminology, added request coverage for registration rate limiting, and cleaned tracked `.DS_Store` artifacts from the repository.
