@@ -16,6 +16,7 @@
 - Added scaffold completion polish: README badges, real Hotwire importmap runtime wiring, Tailwind Rails integration, Kamal deploy placeholder config, and production SSL defaults.
 
 ## 2026-03-11
+- Started Phase 3.1b with the user-facing workout template CRUD shell: routes, thin controller, yabi interactors, mobile-first Haml screens, and request/system coverage for owner-isolated template management.
 
 - Consolidated documentation from 9 files to 3 focused files: `docs/FOUNDATIONS.md`, `docs/QUALITY_SECURITY.md`, and `docs/PLAN.md`.
 - Removed duplicated/verbose docs sections and kept only hard project rules, quality/security gates, and delivery plan.

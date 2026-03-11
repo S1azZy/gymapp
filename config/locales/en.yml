@@ -5,6 +5,7 @@ en:
     admin: "Admin"
     dashboard: "Dashboard"
     exercises: "Exercises"
+    templates: "Templates"
     language: "Language switcher"
     primary: "Primary navigation"
     sign_in: "Sign in"
@@ -17,6 +18,59 @@ en:
   dashboard:
     title: "Dashboard"
     subtitle: "You are signed in as %{email}."
+  workout_templates:
+    eyebrow: "Workout templates"
+    confirm_delete: "Delete this template?"
+    statuses:
+      active: "Active"
+      inactive: "Inactive"
+    actions:
+      back: "Back to templates"
+      cancel: "Cancel"
+      delete: "Delete"
+      edit: "Edit"
+      new: "New template"
+      save: "Save"
+    fields:
+      active: "Active"
+      exercise_count: "Exercises"
+      name: "Name"
+      notes: "Notes"
+    errors:
+      heading: "Please fix the following errors:"
+    flash:
+      created: "Template created."
+      updated: "Template updated."
+      destroyed: "Template deleted."
+      destroy_failed: "Could not delete the template."
+    index:
+      title: "Templates"
+      subtitle: "Build reusable workout plans before you start logging sessions."
+      empty: "No workout templates have been created yet."
+    new:
+      title: "New template"
+      subtitle: "Start with a name and notes. Exercises will be added next."
+    edit:
+      title: "Edit template"
+      subtitle: "Update the template shell before editing exercises."
+    show:
+      summary: "Summary"
+      exercises: "Exercises"
+      empty_exercises: "No exercises have been added yet. This comes in the next step."
+    meta:
+      exercise_count:
+        one: "%{count} exercise"
+        other: "%{count} exercises"
+      position: "Position %{position}"
+      reps_from: "%{min}+ reps"
+      reps_range: "%{min}-%{max} reps"
+      rest_seconds:
+        one: "%{count} sec rest"
+        other: "%{count} sec rest"
+      sets:
+        one: "%{count} set"
+        other: "%{count} sets"
+      updated_at: "Updated %{updated_at}"
   catalog:
     exercises:
       eyebrow: "Exercise catalog"
