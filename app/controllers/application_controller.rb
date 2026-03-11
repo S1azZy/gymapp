@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def available_locales
-    I18n.available_locales
+    Constants::SUPPORTED_LOCALE_KEYS
   end
 
   def default_url_options
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
     return if locale.blank?
 
     normalized_locale = locale.to_s.tr("-", "_").downcase.to_sym
-    normalized_locale if I18n.available_locales.include?(normalized_locale)
+    normalized_locale if Constants::SUPPORTED_LOCALE_KEYS.include?(normalized_locale)
   end
 
   def request_accepted_locale

@@ -135,6 +135,32 @@ button {
   padding: 2rem 1.5rem;
 }
 
+.admin-page {
+  padding: 2rem 1.5rem 3rem;
+}
+
+.admin-page__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-page__eyebrow {
+  margin: 0 0 0.35rem;
+  color: #6d675f;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-page__subtitle {
+  max-width: 44rem;
+}
+
 .auth-card {
   max-width: 28rem;
   margin: 0 auto;
@@ -165,9 +191,121 @@ button {
   background: #fff;
 }
 
+.reference-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.reference-card,
+.reference-form {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: #fffdf7;
+  box-shadow: 0 1rem 2.5rem rgba(32, 35, 31, 0.08);
+}
+
+.reference-card__header,
+.reference-form__actions,
+.reference-card__actions,
+.reference-form__toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.reference-card__translations,
+.reference-form__translations {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 0;
+}
+
+.reference-card__translation {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.reference-card__translation dt {
+  color: #6d675f;
+  font-weight: 700;
+}
+
+.reference-card__translation dd {
+  margin: 0;
+}
+
+.reference-status {
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.reference-status--active {
+  background: #d9f0de;
+  color: #1f4d3a;
+}
+
+.reference-status--inactive {
+  background: #f4e2c4;
+  color: #6b4c18;
+}
+
+.reference-form__locale {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem;
+  border: 1px solid #e4ddd2;
+  border-radius: 0.9rem;
+}
+
+.reference-form__checkbox-label {
+  font-weight: 600;
+}
+
+.reference-empty {
+  padding: 1rem 0;
+  color: #6d675f;
+}
+
+.danger-button {
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: #8a2f2f;
+  color: #fffdf7;
+  cursor: pointer;
+}
+
+.secondary-link--compact {
+  margin-left: 0;
+}
+
+.form-errors {
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: #f8d8d2;
+}
+
+.form-errors h2 {
+  margin-top: 0;
+}
+
 @media (max-width: 640px) {
   .app-header__top,
   .app-nav {
     width: 100%;
+  }
+
+  .reference-card__header,
+  .reference-form__actions,
+  .reference-card__actions,
+  .reference-form__toggle,
+  .admin-page__header {
+    align-items: stretch;
   }
 }

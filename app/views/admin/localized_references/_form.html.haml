@@ -1,0 +1,33 @@
+= form_with model: [ :admin, record ], class: "reference-form" do |form|
+  - if record.errors.any?
+    .form-errors
+      %h2= t("admin.reference_data.errors.heading")
+      %ul
+        - record.errors.full_messages.each do |message|
+          %li= message
+
+  .reference-form__toggle
+    = form.label :active,
+      t("admin.reference_data.fields.active"),
+      class: "reference-form__checkbox-label"
+    = form.check_box :active
+
+  .reference-form__translations
+    - model_key = record.model_name.param_key
+    - available_locales.each do |locale|
+      - translation = translations_for_form.fetch(locale.to_s)
+      - locale_heading = admin_reference_locale_heading(locale)
+      %section.reference-form__locale
+        %h2= locale_heading
+        .auth-form__field
+          - field_id = "#{model_key}_translations_#{locale}_name"
+          - field_name = "#{model_key}[translations][#{locale}][name]"
+          %label{ for: field_id }= t("admin.reference_data.fields.name")
+          = text_field_tag field_name, translation.name, id: field_id
+
+  .reference-form__actions
+    = form.submit t("admin.reference_data.actions.save"),
+      class: "auth-form__submit"
+    = link_to t("admin.reference_data.actions.cancel"),
+      collection_path,
+      class: "secondary-link"

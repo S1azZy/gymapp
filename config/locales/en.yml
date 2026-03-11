@@ -18,8 +18,53 @@ en:
     subtitle: "You are signed in as %{email}."
   admin:
     dashboard:
+      eyebrow: "Admin area"
       title: "Admin"
       subtitle: "Admin access is active for %{email}."
+      sections:
+        reference_data: "Shared reference data available to all users."
+    reference_data:
+      eyebrow: "Reference data"
+      index_subtitle: "Manage the shared %{resource} catalog."
+      form_subtitle: "Define names for both supported locales and set availability."
+      empty: "No %{resource} have been created yet."
+      missing_translation: "Missing"
+      confirm_delete: "Delete this %{resource}?"
+      statuses:
+        active: "Active"
+        inactive: "Inactive"
+      actions:
+        cancel: "Cancel"
+        delete: "Delete"
+        edit: "Edit"
+        edit_resource: "Edit %{resource}"
+        new: "New %{resource}"
+        open: "Open"
+        save: "Save"
+      fields:
+        active: "Active"
+        locale_heading: "%{locale_name} translation"
+        name: "Name"
+      errors:
+        heading: "Please fix the following errors:"
+      flash:
+        created: "%{resource} created."
+        updated: "%{resource} updated."
+        destroyed: "%{resource} deleted."
+        destroy_failed: "Could not delete %{resource}."
+      resources:
+        body_parts:
+          plural: "Body parts"
+          singular: "body part"
+        muscle_groups:
+          plural: "Muscle groups"
+          singular: "muscle group"
+        equipment_types:
+          plural: "Equipment types"
+          singular: "equipment type"
+        tags:
+          plural: "Tags"
+          singular: "tag"
   authorization:
     not_allowed: "You do not have access to that page."
   auth:

@@ -18,8 +18,53 @@ ru:
     subtitle: "Вы вошли как %{email}."
   admin:
     dashboard:
+      eyebrow: "Админ-зона"
       title: "Админка"
       subtitle: "Административный доступ активен для %{email}."
+      sections:
+        reference_data: "Общие справочники, доступные всем пользователям."
+    reference_data:
+      eyebrow: "Справочники"
+      index_subtitle: "Управление общим каталогом: %{resource}."
+      form_subtitle: "Заполните названия для обеих локалей и задайте статус доступности."
+      empty: "%{resource} пока не созданы."
+      missing_translation: "Нет перевода"
+      confirm_delete: "Удалить %{resource}?"
+      statuses:
+        active: "Активно"
+        inactive: "Выключено"
+      actions:
+        cancel: "Отмена"
+        delete: "Удалить"
+        edit: "Редактировать"
+        edit_resource: "Редактировать: %{resource}"
+        new: "Создать: %{resource}"
+        open: "Открыть"
+        save: "Сохранить"
+      fields:
+        active: "Активно"
+        locale_heading: "Перевод: %{locale_name}"
+        name: "Название"
+      errors:
+        heading: "Исправьте ошибки:"
+      flash:
+        created: "%{resource} создан."
+        updated: "%{resource} обновлён."
+        destroyed: "%{resource} удалён."
+        destroy_failed: "Не удалось удалить %{resource}."
+      resources:
+        body_parts:
+          plural: "Части тела"
+          singular: "часть тела"
+        muscle_groups:
+          plural: "Группы мышц"
+          singular: "группа мышц"
+        equipment_types:
+          plural: "Инвентарь"
+          singular: "тип инвентаря"
+        tags:
+          plural: "Теги"
+          singular: "тег"
   authorization:
     not_allowed: "У вас нет доступа к этой странице."
   auth:

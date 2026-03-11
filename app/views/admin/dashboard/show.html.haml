@@ -1,3 +1,19 @@
-%main.home-page
-  %h1= t("admin.dashboard.title")
-  %p= t("admin.dashboard.subtitle", email: current_user.email)
+%main.admin-page
+  .admin-page__header
+    .admin-page__heading
+      %p.admin-page__eyebrow= t("admin.dashboard.eyebrow")
+      %h1= t("admin.dashboard.title")
+      %p.admin-page__subtitle
+        = t("admin.dashboard.subtitle", email: current_user.email)
+
+  .reference-grid
+    - %w[body_parts muscle_groups equipment_types tags].each do |resource|
+      - resource_name = admin_reference_resource_label(resource, :plural)
+      - resource_path = public_send("admin_#{resource}_path")
+      %section.reference-card
+        %h2= resource_name
+        %p= t("admin.dashboard.sections.reference_data")
+        .reference-card__actions
+          = link_to admin_reference_action_label(:open),
+            resource_path,
+            class: "primary-link"

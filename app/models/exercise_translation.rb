@@ -1,13 +1,11 @@
 class ExerciseTranslation < ApplicationRecord
-  SUPPORTED_LOCALES = %w[en ru].freeze
-
   belongs_to :exercise
 
   normalizes :name, with: ->(value) { value.to_s.strip }
   normalizes :description, with: ->(value) { value.to_s.strip }
 
   validates :exercise, presence: true
-  validates :locale, presence: true, inclusion: { in: SUPPORTED_LOCALES }
+  validates :locale, presence: true, inclusion: { in: Constants::SUPPORTED_LOCALES }
   validates :name, presence: true, length: { maximum: 255 }
   validates :description, length: { maximum: 2000 }
   validates :locale, uniqueness: { scope: :exercise_id }
