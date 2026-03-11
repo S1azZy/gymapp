@@ -6,22 +6,24 @@
       %p.admin-page__subtitle
         = t("admin.dashboard.subtitle", email: current_user.email)
 
-  :ruby
-    admin_resources = [
-      "body_parts",
-      "muscle_groups",
-      "equipment_types",
-      "tags",
-      "exercises"
-    ]
   .reference-grid
-    - admin_resources.each do |resource|
-      - resource_name = admin_reference_resource_label(resource, :plural)
-      - resource_path = public_send("admin_#{resource}_path")
+    - @resource_cards.each do |card|
+      :ruby
+        resource_key = card[:resource_key]
+        resource_name = admin_reference_resource_label(resource_key, :plural)
+        singular_resource_name =
+          admin_reference_resource_label(resource_key, :singular)
+        new_resource_label =
+          admin_reference_action_label(:new, singular_resource_name)
       %section.reference-card
         %h2= resource_name
         %p= t("admin.dashboard.sections.reference_data")
+        %p.reference-card__meta
+          = admin_dashboard_resource_count_text(card[:count])
         .reference-card__actions
           = link_to admin_reference_action_label(:open),
-            resource_path,
+            admin_dashboard_resource_path(resource_key),
             class: "primary-link"
+          = link_to new_resource_label,
+            admin_dashboard_new_resource_path(resource_key),
+            class: "secondary-link secondary-link--compact"
