@@ -4,6 +4,7 @@ class User < ApplicationRecord
   enum :role, { member: "member", admin: "admin" }, default: :member, validate: true
 
   has_many :password_reset_tokens, dependent: :destroy
+  has_many :workout_templates, dependent: :destroy
   has_many :user_sessions, dependent: :destroy
 
   normalizes :email, with: ->(value) { value.strip.downcase }

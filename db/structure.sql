@@ -237,6 +237,40 @@ CREATE TABLE public.users (
 
 
 --
+-- Name: workout_template_exercises; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.workout_template_exercises (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    workout_template_id uuid NOT NULL,
+    exercise_id uuid NOT NULL,
+    "position" integer NOT NULL,
+    planned_sets_count integer,
+    target_reps_min integer,
+    target_reps_max integer,
+    rest_seconds integer,
+    notes text,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: workout_templates; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.workout_templates (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    user_id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    notes text,
+    active boolean DEFAULT true NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -365,10 +399,47 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: workout_template_exercises workout_template_exercises_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workout_template_exercises
+    ADD CONSTRAINT workout_template_exercises_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: workout_templates workout_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workout_templates
+    ADD CONSTRAINT workout_templates_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: idx_eq_type_tr_on_eq_type_id_locale; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX idx_eq_type_tr_on_eq_type_id_locale ON public.equipment_type_translations USING btree (equipment_type_id, locale);
+
+
+--
+-- Name: idx_wt_ex_on_exercise_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_wt_ex_on_exercise_id ON public.workout_template_exercises USING btree (exercise_id);
+
+
+--
+-- Name: idx_wt_ex_on_template_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_wt_ex_on_template_id ON public.workout_template_exercises USING btree (workout_template_id);
+
+
+--
+-- Name: idx_wt_ex_on_template_id_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_wt_ex_on_template_id_position ON public.workout_template_exercises USING btree (workout_template_id, "position");
 
 
 --
@@ -568,6 +639,13 @@ CREATE UNIQUE INDEX index_users_on_lower_email ON public.users USING btree (lowe
 
 
 --
+-- Name: index_workout_templates_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workout_templates_on_user_id ON public.workout_templates USING btree (user_id);
+
+
+--
 -- Name: body_part_translations fk_body_part_translations_body_parts; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -664,12 +742,38 @@ ALTER TABLE ONLY public.user_sessions
 
 
 --
+-- Name: workout_templates fk_workout_templates_users; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workout_templates
+    ADD CONSTRAINT fk_workout_templates_users FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
+
+
+--
+-- Name: workout_template_exercises fk_wt_ex_exercises; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workout_template_exercises
+    ADD CONSTRAINT fk_wt_ex_exercises FOREIGN KEY (exercise_id) REFERENCES public.exercises(id) ON DELETE RESTRICT;
+
+
+--
+-- Name: workout_template_exercises fk_wt_ex_templates; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workout_template_exercises
+    ADD CONSTRAINT fk_wt_ex_templates FOREIGN KEY (workout_template_id) REFERENCES public.workout_templates(id) ON DELETE CASCADE;
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20260311150100'),
+('20260311150000'),
 ('20260311130200'),
 ('20260311130100'),
 ('20260311130000'),

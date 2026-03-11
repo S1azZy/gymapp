@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
     create(:user)
   end
 
+  it { is_expected.to have_many(:workout_templates).dependent(:destroy) }
   it { is_expected.to have_many(:user_sessions).dependent(:destroy) }
   it { is_expected.to validate_presence_of(:email) }
   it { is_expected.to validate_length_of(:email).is_at_most(255) }

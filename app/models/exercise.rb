@@ -4,8 +4,10 @@ class Exercise < ApplicationRecord
   belongs_to :equipment_type
 
   has_many :exercise_tags, dependent: :destroy
+  has_many :workout_template_exercises, dependent: :restrict_with_exception
   has_many :tags, through: :exercise_tags
   has_many :exercise_translations, dependent: :destroy
+  has_many :workout_templates, through: :workout_template_exercises
 
   normalizes :key, with: ->(value) { Constants.normalize_catalog_key(value) }
 
