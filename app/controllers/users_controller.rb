@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       start_new_session_for(result.value!)
       redirect_to dashboard_path, notice: t("auth.flash.signed_up")
     else
-      @user = User.new(user_params.except(:password, :password_confirmation))
+      @user = result.failure[:user] || User.new(user_params.except(:password, :password_confirmation))
       flash.now[:alert] = t("auth.flash.sign_up_failed")
       render :new, status: :unprocessable_content
     end

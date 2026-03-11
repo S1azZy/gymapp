@@ -240,8 +240,10 @@ ru:
         subtitle: "Начните с email и безопасного пароля."
       form:
         email: "Email"
+        errors_heading: "Исправьте ошибки:"
         password: "Пароль"
         password_confirmation: "Подтвердите пароль"
+        password_hint: "Используйте минимум 8 символов."
         submit: "Создать аккаунт"
     password_resets:
       new:

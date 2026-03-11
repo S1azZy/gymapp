@@ -4,6 +4,13 @@
     %p.auth-card__subtitle= t("auth.users.new.subtitle")
 
     = form_with model: @user, class: "auth-form" do |form|
+      - if @user.errors.any?
+        .form-errors
+          %h2= t("auth.users.form.errors_heading")
+          %ul
+            - @user.errors.full_messages.each do |message|
+              %li= message
+
       .auth-form__field
         = form.label :email, t("auth.users.form.email")
         = form.email_field :email, autocomplete: "email", required: true
@@ -13,6 +20,7 @@
         = form.password_field :password,
           autocomplete: "new-password",
           required: true
+        %p.auth-form__hint= t("auth.users.form.password_hint")
 
       .auth-form__field
         = form.label :password_confirmation,
