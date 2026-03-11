@@ -7,19 +7,59 @@ end
 
 RSpec.describe Seeds::Catalog do
   let(:seed_file) { Rails.root.join("db/seeds.rb") }
+  let(:catalog_file) { Rails.root.join("db/seeds/catalog.rb") }
 
   def load_seeds
     silence_warnings { load seed_file }
   end
 
+  def load_catalog_definitions
+    silence_warnings { load catalog_file }
+  end
+
+  def expected_body_parts_count
+    load_catalog_definitions
+    described_class::BODY_PARTS.size
+  end
+
+  def expected_muscle_groups_count
+    load_catalog_definitions
+    described_class::MUSCLE_GROUPS.size
+  end
+
+  def expected_equipment_types_count
+    load_catalog_definitions
+    described_class::EQUIPMENT_TYPES.size
+  end
+
+  def expected_tags_count
+    load_catalog_definitions
+    described_class::TAGS.size
+  end
+
+  def expected_exercises_count
+    load_catalog_definitions
+    described_class::EXERCISES.size
+  end
+
+  def expected_exercise_tags_count
+    load_catalog_definitions
+    described_class::EXERCISES.sum { |row| row.fetch(:tag_keys).size }
+  end
+
+  def expected_exercise_translations_count
+    load_catalog_definitions
+    described_class::EXERCISES.sum { |row| row.fetch(:translations).size }
+  end
+
   it "creates the baseline reference and exercise dataset" do
-    expect { load_seeds }.to change(BodyPart, :count).by(4)
-      .and change(MuscleGroup, :count).by(12)
-      .and change(EquipmentType, :count).by(8)
-      .and change(Tag, :count).by(14)
-      .and change(Exercise, :count).by(30)
-      .and change(ExerciseTag, :count).by(105)
-      .and change(ExerciseTranslation, :count).by(60)
+    expect { load_seeds }.to change(BodyPart, :count).by(expected_body_parts_count)
+      .and change(MuscleGroup, :count).by(expected_muscle_groups_count)
+      .and change(EquipmentType, :count).by(expected_equipment_types_count)
+      .and change(Tag, :count).by(expected_tags_count)
+      .and change(Exercise, :count).by(expected_exercises_count)
+      .and change(ExerciseTag, :count).by(expected_exercise_tags_count)
+      .and change(ExerciseTranslation, :count).by(expected_exercise_translations_count)
   end
 
   context "when the catalog was already seeded" do
