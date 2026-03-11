@@ -76,5 +76,11 @@ RSpec.describe "Users", type: :request do
 
       expect(response).to have_http_status(:unprocessable_content)
     end
+
+    it "renders the validation error" do
+      perform_request
+
+      expect(response.body).to include("Password confirmation doesn&#39;t match Password")
+    end
   end
 end

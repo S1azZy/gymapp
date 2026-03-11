@@ -23,7 +23,7 @@ module Auth
           preferred_locale: preferred_locale || I18n.default_locale.to_s
         )
 
-        return Failure(code: :invalid_attributes, errors: validation_errors(user)) unless user.save
+        return Failure(code: :invalid_attributes, user:, errors: validation_errors(user)) unless user.save
 
         Success(user)
       end
