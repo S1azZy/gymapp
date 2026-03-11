@@ -1,0 +1,10 @@
+- content_for :title, t("workout_templates.new.title")
+
+%main.catalog-page
+  .catalog-page__header
+    .catalog-page__heading
+      %p.catalog-page__eyebrow= t("workout_templates.eyebrow")
+      %h1= t("workout_templates.new.title")
+      %p.catalog-page__subtitle= t("workout_templates.new.subtitle")
+
+  = render "form", workout_template: @workout_template

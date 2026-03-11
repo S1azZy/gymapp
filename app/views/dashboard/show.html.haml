@@ -1,6 +1,8 @@
 %main.home-page
   %h1= t("dashboard.title")
   %p= t("dashboard.subtitle", email: current_user.email)
-  = link_to t("navigation.exercises"), exercises_path, class: "primary-link"
+  .reference-form__actions
+    = link_to t("navigation.exercises"), exercises_path, class: "primary-link"
+    = secondary_link_to t("navigation.templates"), workout_templates_path
   - if current_user.admin?
     = secondary_link_to t("navigation.admin"), admin_dashboard_path

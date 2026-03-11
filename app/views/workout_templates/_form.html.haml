@@ -1,0 +1,28 @@
+= form_with model: workout_template, class: "reference-form" do |form|
+  - if workout_template.errors.any?
+    .form-errors
+      %h2= t("workout_templates.errors.heading")
+      %ul
+        - workout_template.errors.full_messages.each do |message|
+          %li= message
+
+  .auth-form__field
+    = form.label :name, t("workout_templates.fields.name")
+    = form.text_field :name, autofocus: true
+
+  .auth-form__field
+    = form.label :notes, t("workout_templates.fields.notes")
+    = form.text_area :notes, rows: 4
+
+  .reference-form__toggle
+    = form.label :active,
+      t("workout_templates.fields.active"),
+      class: "reference-form__checkbox-label"
+    = form.check_box :active
+
+  .reference-form__actions
+    = form.submit t("workout_templates.actions.save"),
+      class: "auth-form__submit"
+    = link_to t("workout_templates.actions.cancel"),
+      workout_templates_path,
+      class: "secondary-link"

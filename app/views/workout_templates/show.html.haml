@@ -1,0 +1,79 @@
+- content_for :title, @workout_template.name
+- template_exercises = @workout_template.workout_template_exercises
+
+%main.catalog-page
+  .catalog-page__header
+    .catalog-page__heading
+      %p.catalog-page__eyebrow= t("workout_templates.eyebrow")
+      %h1= @workout_template.name
+      %p.catalog-page__subtitle
+        = workout_template_updated_at_text(@workout_template)
+    .reference-form__actions
+      = link_to t("workout_templates.actions.edit"),
+        edit_workout_template_path(@workout_template),
+        class: "primary-link"
+      = button_to t("workout_templates.actions.delete"),
+        workout_template_path(@workout_template),
+        method: :delete,
+        class: "secondary-link",
+        data: { turbo_confirm: t("workout_templates.confirm_delete") }
+      = secondary_link_to t("workout_templates.actions.back"),
+        workout_templates_path
+
+  %section.catalog-detail
+    .catalog-detail__section
+      %h2= t("workout_templates.show.summary")
+      %dl.catalog-detail__list
+        %div
+          %dt= t("workout_templates.fields.active")
+          %dd= workout_template_status_text(@workout_template)
+        %div
+          %dt= t("workout_templates.fields.exercise_count")
+          %dd= workout_template_exercise_count_text(@workout_template)
+      - if @workout_template.notes.present?
+        .catalog-detail__section
+          %h2= t("workout_templates.fields.notes")
+          %p.catalog-card__description= @workout_template.notes
+
+    .catalog-detail__section
+      %h2= t("workout_templates.show.exercises")
+      - if template_exercises.any?
+        .catalog-grid
+          - template_exercises.each do |template_exercise|
+            :ruby
+              position_text = workout_template_exercise_position_text(
+                template_exercise
+              )
+              exercise_name = workout_template_exercise_name(
+                template_exercise
+              )
+              exercise_sets_text = workout_template_exercise_sets_text(
+                template_exercise
+              )
+              exercise_reps_text = workout_template_exercise_reps_text(
+                template_exercise
+              )
+              exercise_rest_text = workout_template_exercise_rest_text(
+                template_exercise
+              )
+              classification_text =
+                workout_template_exercise_classification_text(template_exercise)
+            %article.catalog-card
+              .catalog-card__header
+                %div
+                  %p.catalog-card__key= position_text
+                  = link_to exercise_name,
+                    exercise_path(template_exercise.exercise),
+                    class: "catalog-card__title"
+                .catalog-chip-list
+                  - if exercise_sets_text.present?
+                    %span.catalog-chip= exercise_sets_text
+                  - if exercise_reps_text.present?
+                    %span.catalog-chip= exercise_reps_text
+                  - if exercise_rest_text.present?
+                    %span.catalog-chip= exercise_rest_text
+              %p.catalog-card__meta= classification_text
+              - if template_exercise.notes.present?
+                %p.catalog-card__description= template_exercise.notes
+      - else
+        %p.catalog-empty= t("workout_templates.show.empty_exercises")

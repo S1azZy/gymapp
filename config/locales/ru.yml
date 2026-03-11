@@ -5,6 +5,7 @@ ru:
     admin: "Админка"
     dashboard: "Панель"
     exercises: "Упражнения"
+    templates: "Шаблоны"
     language: "Переключение языка"
     primary: "Основная навигация"
     sign_in: "Войти"
@@ -17,6 +18,65 @@ ru:
   dashboard:
     title: "Панель"
     subtitle: "Вы вошли как %{email}."
+  workout_templates:
+    eyebrow: "Шаблоны тренировок"
+    confirm_delete: "Удалить этот шаблон?"
+    statuses:
+      active: "Активен"
+      inactive: "Неактивен"
+    actions:
+      back: "Назад к шаблонам"
+      cancel: "Отмена"
+      delete: "Удалить"
+      edit: "Редактировать"
+      new: "Новый шаблон"
+      save: "Сохранить"
+    fields:
+      active: "Активен"
+      exercise_count: "Упражнения"
+      name: "Название"
+      notes: "Заметки"
+    errors:
+      heading: "Исправьте ошибки:"
+    flash:
+      created: "Шаблон создан."
+      updated: "Шаблон обновлён."
+      destroyed: "Шаблон удалён."
+      destroy_failed: "Не удалось удалить шаблон."
+    index:
+      title: "Шаблоны"
+      subtitle: "Создавайте переиспользуемые планы тренировок до начала логирования сессий."
+      empty: "Шаблоны тренировок пока не созданы."
+    new:
+      title: "Новый шаблон"
+      subtitle: "Начните с названия и заметок. Упражнения добавим следующим шагом."
+    edit:
+      title: "Редактировать шаблон"
+      subtitle: "Обновите каркас шаблона перед редактированием упражнений."
+    show:
+      summary: "Сводка"
+      exercises: "Упражнения"
+      empty_exercises: "Упражнения пока не добавлены. Это будет следующим шагом."
+    meta:
+      exercise_count:
+        one: "%{count} упражнение"
+        few: "%{count} упражнения"
+        many: "%{count} упражнений"
+        other: "%{count} упражнения"
+      position: "Позиция %{position}"
+      reps_from: "от %{min} повторений"
+      reps_range: "%{min}-%{max} повторений"
+      rest_seconds:
+        one: "%{count} сек отдыха"
+        few: "%{count} сек отдыха"
+        many: "%{count} сек отдыха"
+        other: "%{count} сек отдыха"
+      sets:
+        one: "%{count} подход"
+        few: "%{count} подхода"
+        many: "%{count} подходов"
+        other: "%{count} подхода"
+      updated_at: "Обновлено: %{updated_at}"
   catalog:
     exercises:
       eyebrow: "Каталог упражнений"
