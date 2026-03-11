@@ -20,3 +20,5 @@
 - Consolidated documentation from 9 files to 3 focused files: `docs/FOUNDATIONS.md`, `docs/QUALITY_SECURITY.md`, and `docs/PLAN.md`.
 - Removed duplicated/verbose docs sections and kept only hard project rules, quality/security gates, and delivery plan.
 - Updated `AGENTS.md`, `README.md`, and `templates/CODEX_BOOTSTRAP_PROMPT.md` to reference the new docs structure.
+- Started Phase 2 (iteration 2.1): added reference-data schema and models for the shared exercise catalog with SQL-only migrations (1 file per table), strict UUIDv7/FK/index rules, factories, and model-level RSpec coverage.
+- Standardized localization storage for dynamic catalog/reference data via per-entity translation tables (`*_translations`), including exercise synonyms stored per locale.

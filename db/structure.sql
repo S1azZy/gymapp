@@ -27,6 +27,128 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: body_part_translations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.body_part_translations (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    body_part_id uuid NOT NULL,
+    locale character varying NOT NULL,
+    name text NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: body_parts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.body_parts (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    active boolean DEFAULT true NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: equipment_type_translations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.equipment_type_translations (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    equipment_type_id uuid NOT NULL,
+    locale character varying NOT NULL,
+    name text NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: equipment_types; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.equipment_types (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    active boolean DEFAULT true NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: exercise_tags; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.exercise_tags (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    exercise_id uuid NOT NULL,
+    tag_id uuid NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: exercise_translations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.exercise_translations (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    exercise_id uuid NOT NULL,
+    locale character varying NOT NULL,
+    name text NOT NULL,
+    description text,
+    synonyms text[] DEFAULT '{}'::text[] NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: exercises; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.exercises (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    body_part_id uuid NOT NULL,
+    muscle_group_id uuid NOT NULL,
+    equipment_type_id uuid NOT NULL,
+    active boolean DEFAULT true NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: muscle_group_translations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.muscle_group_translations (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    muscle_group_id uuid NOT NULL,
+    locale character varying NOT NULL,
+    name text NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: muscle_groups; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.muscle_groups (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    active boolean DEFAULT true NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
 -- Name: password_reset_tokens; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -47,6 +169,32 @@ CREATE TABLE public.password_reset_tokens (
 
 CREATE TABLE public.schema_migrations (
     version character varying NOT NULL
+);
+
+
+--
+-- Name: tag_translations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.tag_translations (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    tag_id uuid NOT NULL,
+    locale character varying NOT NULL,
+    name text NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.tags (
+    id uuid DEFAULT uuidv7() NOT NULL,
+    active boolean DEFAULT true NOT NULL,
+    created_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp(6) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 
@@ -87,6 +235,78 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: body_part_translations body_part_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.body_part_translations
+    ADD CONSTRAINT body_part_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: body_parts body_parts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.body_parts
+    ADD CONSTRAINT body_parts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: equipment_type_translations equipment_type_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.equipment_type_translations
+    ADD CONSTRAINT equipment_type_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: equipment_types equipment_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.equipment_types
+    ADD CONSTRAINT equipment_types_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: exercise_tags exercise_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercise_tags
+    ADD CONSTRAINT exercise_tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: exercise_translations exercise_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercise_translations
+    ADD CONSTRAINT exercise_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: exercises exercises_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercises
+    ADD CONSTRAINT exercises_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: muscle_group_translations muscle_group_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.muscle_group_translations
+    ADD CONSTRAINT muscle_group_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: muscle_groups muscle_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.muscle_groups
+    ADD CONSTRAINT muscle_groups_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: password_reset_tokens password_reset_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -100,6 +320,22 @@ ALTER TABLE ONLY public.password_reset_tokens
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: tag_translations tag_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tag_translations
+    ADD CONSTRAINT tag_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
 
 
 --
@@ -119,6 +355,104 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: idx_eq_type_tr_on_eq_type_id_locale; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_eq_type_tr_on_eq_type_id_locale ON public.equipment_type_translations USING btree (equipment_type_id, locale);
+
+
+--
+-- Name: index_body_part_translations_on_body_part_id_and_locale; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_body_part_translations_on_body_part_id_and_locale ON public.body_part_translations USING btree (body_part_id, locale);
+
+
+--
+-- Name: index_body_part_translations_on_locale_and_lower_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_body_part_translations_on_locale_and_lower_name ON public.body_part_translations USING btree (locale, lower(name));
+
+
+--
+-- Name: index_equipment_type_translations_on_locale_and_lower_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_equipment_type_translations_on_locale_and_lower_name ON public.equipment_type_translations USING btree (locale, lower(name));
+
+
+--
+-- Name: index_exercise_tags_on_exercise_id_and_tag_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_exercise_tags_on_exercise_id_and_tag_id ON public.exercise_tags USING btree (exercise_id, tag_id);
+
+
+--
+-- Name: index_exercise_tags_on_tag_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_exercise_tags_on_tag_id ON public.exercise_tags USING btree (tag_id);
+
+
+--
+-- Name: index_exercise_translations_on_exercise_id_and_locale; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_exercise_translations_on_exercise_id_and_locale ON public.exercise_translations USING btree (exercise_id, locale);
+
+
+--
+-- Name: index_exercise_translations_on_locale_and_lower_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_exercise_translations_on_locale_and_lower_name ON public.exercise_translations USING btree (locale, lower(name));
+
+
+--
+-- Name: index_exercise_translations_on_synonyms; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_exercise_translations_on_synonyms ON public.exercise_translations USING gin (synonyms);
+
+
+--
+-- Name: index_exercises_on_body_part_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_exercises_on_body_part_id ON public.exercises USING btree (body_part_id);
+
+
+--
+-- Name: index_exercises_on_equipment_type_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_exercises_on_equipment_type_id ON public.exercises USING btree (equipment_type_id);
+
+
+--
+-- Name: index_exercises_on_muscle_group_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_exercises_on_muscle_group_id ON public.exercises USING btree (muscle_group_id);
+
+
+--
+-- Name: index_muscle_group_translations_on_locale_and_lower_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_muscle_group_translations_on_locale_and_lower_name ON public.muscle_group_translations USING btree (locale, lower(name));
+
+
+--
+-- Name: index_muscle_group_translations_on_muscle_group_id_and_locale; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_muscle_group_translations_on_muscle_group_id_and_locale ON public.muscle_group_translations USING btree (muscle_group_id, locale);
+
+
+--
 -- Name: index_password_reset_tokens_on_token_digest; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -130,6 +464,20 @@ CREATE UNIQUE INDEX index_password_reset_tokens_on_token_digest ON public.passwo
 --
 
 CREATE INDEX index_password_reset_tokens_on_user_id ON public.password_reset_tokens USING btree (user_id);
+
+
+--
+-- Name: index_tag_translations_on_locale_and_lower_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tag_translations_on_locale_and_lower_name ON public.tag_translations USING btree (locale, lower(name));
+
+
+--
+-- Name: index_tag_translations_on_tag_id_and_locale; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_tag_translations_on_tag_id_and_locale ON public.tag_translations USING btree (tag_id, locale);
 
 
 --
@@ -147,11 +495,91 @@ CREATE UNIQUE INDEX index_users_on_lower_email ON public.users USING btree (lowe
 
 
 --
+-- Name: body_part_translations fk_body_part_translations_body_parts; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.body_part_translations
+    ADD CONSTRAINT fk_body_part_translations_body_parts FOREIGN KEY (body_part_id) REFERENCES public.body_parts(id) ON DELETE CASCADE;
+
+
+--
+-- Name: equipment_type_translations fk_equipment_type_translations_equipment_types; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.equipment_type_translations
+    ADD CONSTRAINT fk_equipment_type_translations_equipment_types FOREIGN KEY (equipment_type_id) REFERENCES public.equipment_types(id) ON DELETE CASCADE;
+
+
+--
+-- Name: exercise_tags fk_exercise_tags_exercises; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercise_tags
+    ADD CONSTRAINT fk_exercise_tags_exercises FOREIGN KEY (exercise_id) REFERENCES public.exercises(id) ON DELETE CASCADE;
+
+
+--
+-- Name: exercise_tags fk_exercise_tags_tags; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercise_tags
+    ADD CONSTRAINT fk_exercise_tags_tags FOREIGN KEY (tag_id) REFERENCES public.tags(id) ON DELETE CASCADE;
+
+
+--
+-- Name: exercise_translations fk_exercise_translations_exercises; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercise_translations
+    ADD CONSTRAINT fk_exercise_translations_exercises FOREIGN KEY (exercise_id) REFERENCES public.exercises(id) ON DELETE CASCADE;
+
+
+--
+-- Name: exercises fk_exercises_body_parts; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercises
+    ADD CONSTRAINT fk_exercises_body_parts FOREIGN KEY (body_part_id) REFERENCES public.body_parts(id) ON DELETE RESTRICT;
+
+
+--
+-- Name: exercises fk_exercises_equipment_types; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercises
+    ADD CONSTRAINT fk_exercises_equipment_types FOREIGN KEY (equipment_type_id) REFERENCES public.equipment_types(id) ON DELETE RESTRICT;
+
+
+--
+-- Name: exercises fk_exercises_muscle_groups; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.exercises
+    ADD CONSTRAINT fk_exercises_muscle_groups FOREIGN KEY (muscle_group_id) REFERENCES public.muscle_groups(id) ON DELETE RESTRICT;
+
+
+--
+-- Name: muscle_group_translations fk_muscle_group_translations_muscle_groups; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.muscle_group_translations
+    ADD CONSTRAINT fk_muscle_group_translations_muscle_groups FOREIGN KEY (muscle_group_id) REFERENCES public.muscle_groups(id) ON DELETE CASCADE;
+
+
+--
 -- Name: password_reset_tokens fk_password_reset_tokens_users; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.password_reset_tokens
     ADD CONSTRAINT fk_password_reset_tokens_users FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
+
+
+--
+-- Name: tag_translations fk_tag_translations_tags; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tag_translations
+    ADD CONSTRAINT fk_tag_translations_tags FOREIGN KEY (tag_id) REFERENCES public.tags(id) ON DELETE CASCADE;
 
 
 --
@@ -169,6 +597,19 @@ ALTER TABLE ONLY public.user_sessions
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20260311112200'),
+('20260311112100'),
+('20260311112000'),
+('20260311111900'),
+('20260311111800'),
+('20260311111700'),
+('20260311111600'),
+('20260311111500'),
+('20260311111400'),
+('20260311111300'),
+('20260311111200'),
+('20260311111100'),
+('20260311111000'),
 ('20260306150000'),
 ('20260306140000');
 

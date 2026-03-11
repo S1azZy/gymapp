@@ -91,10 +91,12 @@ Reference data:
 - Canonical dump: `structure.sql`
 - Every PK: `uuid PRIMARY KEY DEFAULT uuidv7()`
 - Explicit foreign keys and indexes
+- Keep all index names within PostgreSQL identifier limit (`<= 63` chars)
 - Required constraints: `NOT NULL`, `FOREIGN KEY`, indexes as needed
 - `CHECK` only for true storage-level invariants
 - Business validation belongs to app layer
 - No triggers/stored procedures/extensions unless explicitly approved
+- Dynamic localized reference/catalog data must use base tables plus per-entity `*_translations` tables (no locale-specific columns in base tables).
 
 ## Consistency contract
 - Do not mix multiple interactor styles
