@@ -422,7 +422,7 @@ GEM
     tailwindcss-ruby (4.2.0-x86_64-linux-gnu)
     tailwindcss-ruby (4.2.0-x86_64-linux-musl)
     temple (0.10.4)
-    test-prof (1.5.2)
+    test-prof (1.6.0)
     thor (1.5.0)
     thruster (0.1.19)
     thruster (0.1.19-aarch64-linux)
